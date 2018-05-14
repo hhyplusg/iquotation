@@ -75,10 +75,10 @@ button {
     color: #27757b;
     background-color: rgba(255,255,255,.4);
     border-color: rgba(39,117,123,.15);
-    &:hover, &:active {
-    	background-color: rgba(39,117,123,.08);
-		border-color: rgba(39,117,123,.3);
-    }
+    // &:hover, &:active {
+    // 	background-color: rgba(39,117,123,.08);
+	// 	border-color: rgba(39,117,123,.3);
+    // }
 		&:before {
 			display: inline-block;
 			width: 12px;

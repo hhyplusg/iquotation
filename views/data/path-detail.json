@@ -1,11 +1,20 @@
 {
      "demos": [
 
-        {
-            "name": "observesystem",
+   		{
+            "name": "login",
             "data": "views/data/data.json",
-            "template": "observesystem.html"
+            "template": "login.html"
+        },
+   		{
+            "name": "inquiry",
+            "data": "views/data/data.json",
+            "template": "inquiry.html"
+        },
+   		{
+            "name": "manager",
+            "data": "views/data/data.json",
+            "template": "manager.html"
         }
-   
      ]
 }

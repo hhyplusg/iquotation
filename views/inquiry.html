@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html class="core" lang="zh-Hans">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title> 询价 </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="copyright" content="众杰能">
+	<meta name="robots" content="index,follow">
+	<meta name="author" content=""> 
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+	<meta property="og:locale" content="zh-Hans">
+    <link inline rel="stylesheet" type="text/css" href="styles/observe.css">
+    <script src="http://static.ftchinese.com/js/jquery-1.10.2.min.js?0"></script>
+
+    <style type="text/css">
+        .dropdown-toggle{
+            width: 40px;
+            height: 28px;
+        }
+                
+    </style>
+
+</head>
+<body>
+
+ <div class="container">
+    <div class="row clearfix">
+        <!-- -->
+        <div class="col-md-2 column">
+            <h3>
+                向银行询价
+            </h3>
+            <jsp:include page="userInfo.jsp"></jsp:include>
+        </div>
+    </div>
+    <div class="row clearfix" style="width: 1315px">
+        <div class="col-md-8 column" >
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <form id="formSearch" class="form-inline" role="form">
+                        <div class="form-group">
+                            <label for="f1">银行名称</label>
+                            <input type="text" class="form-control" id="bankName" placeholder="银行名称" style="width:150px"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="f1">日期</label>
+                            <div class='input-group date' id='quoteDateStart'>  
+                                <input type='text' class="form-control" style="width:150px"/>  
+                                <span class="input-group-addon">  
+                                    <span class="glyphicon glyphicon-calendar"></span>  
+                                </span>  
+                            </div> 
+                            &nbsp-&nbsp
+                            <div class='input-group date' id='quoteDateEnd'>  
+                                <input type='text' class="form-control" style="width:150px"/>  
+                                <span class="input-group-addon">  
+                                    <span class="glyphicon glyphicon-calendar"></span>  
+                                </span>  
+                            </div> 
+                        </div>
+
+                        <button type="button" id="btn_query" class="btn btn-default" style="width: 72px;height: 34px;">查询</button>&nbsp;
+                        <table id="quoteTable" >
+                            <input type="button" value="新增报价"  id="btn"  class="btn btn-default" style="width: 72px;height: 34px ;padding-left: 7px"/>
+                        </table>
+                        <!-- <button type="button" id="btn_rest" class="btn btn-primary">重置</button>     -->
+                    </form>
+                </div>
+            </div>
+            <div id="modal" class="modal fade">
+                <div class="modal-dialog"  style="width:610px">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <form id="addQuote"> 
+                                <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="2">报价日期</th>
+                                                    <th colspan="5">选择机构</th>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <div class="form-group">
+                                                            <div class='input-group date' id='quoteDate1' name="quoteDate1" >  
+                                                                <input type='text' class="form-control" style="width:100px"/>  
+                                                                <span class="input-group-addon">  
+                                                                    <span class="glyphicon glyphicon-calendar"></span>  
+                                                                </span>  
+                                                            </div> 
+                                                        </div>
+                                                    </td>
+                                                    <td colspan="5">
+                                                        <div class="form-group">
+                                                            <select id="slpk" name="corpid" class="selectpicker" data-live-search="true" multiple></select>
+                                                        </div>
+                                                    </td>
+                                                    <!-- <td colspan="5"><input type="text" name="corpid" size="54"/></td> -->
+                                                </tr>
+                                                <tr>
+                                                    <th>7D</th>
+                                                    <th>14D</th>
+                                                    <th>1M</th>
+                                                    <th>2M</th>
+                                                    <th>3M</th>
+                                                    <th>6M</th>
+                                                    <th>1Y</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <input type="text" name="ratesevenday" size="3"/>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <input type="text" name="ratefourteenday" size="3"/>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <input type="text" name="rateonemonth" size="3"/>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <input type="text" name="ratetwomonth" size="3"/>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <input type="text" name="ratethreemonth" size="3"/>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <input type="text" name="ratesixmonth" size="3"/>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <input type="text" name="oneyear" size="3"/>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                
+                                            </thead>
+                                        </table>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="button" class="btn btn-primary submit" id="validateBtn">提交</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            
+            <br>
+            
+        </div>
+        <div class="col-md-4 column">
+            <div class="tabbable" id="tabs-207310">
+                <ul class="nav nav-tabs">
+                    <li>
+                         <a href="#panel-685775" data-toggle="tab">询价记录</a>
+                    </li>
+                    <li class="active">
+                         <a href="#panel-703226" data-toggle="tab">我要询价</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane" id="panel-685775">
+                        <form id="formSearchInquiry" class="form-inline" role="form">
+                            <div class="form-group">
+                                <div class='input-group date' id='inquiryDateStart' name='inquiryDateStart'>  
+                                    <input type='text' class="form-control" style="width:100px"/>  
+                                    <span class="input-group-addon">  
+                                        <span class="glyphicon glyphicon-calendar"></span>  
+                                    </span>  
+                                </div> 
+                                &nbsp-&nbsp
+                                <div class='input-group date' id='inquiryDateEnd'>  
+                                    <input type='text' class="form-control" style="width:100px"/>  
+                                    <span class="input-group-addon">  
+                                        <span class="glyphicon glyphicon-calendar"></span>  
+                                    </span>  
+                                </div> 
+                            </div>
+    
+                            <button type="button" id="btn_queryInquiry" class="btn btn-default">查询</button>
+                            <button class="btn btn-default" type="button" id="refresh" name="refresh" title="刷新" style="width: 54px;height: 34px">
+                                <i class="glyphicon glyphicon-refresh icon-refresh" ></i>
+                            </button>
+                        
+                        <div>
+                            <table id="inquiryTable"
+                                   data-height="450"
+                                   data-pagination="true"
+                                   data-side-pagination="client"
+                                   data-page-number="1"
+                                   data-page-size="10"
+                                   data-page-list="[10, 25, 50, 100, All]"
+                                   data-striped="true"
+                                   data-show-header="false"
+                                   
+                                   data-query-params="queryParamsInquiry"
+                                   data-toolbar=".toolbar">
+                                <thead>
+                                <tr>
+                                    <th data-field="inquirycontent">询价内容</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane active" id="panel-703226">
+                        <form role="form" id="addInquiry">
+                            <div class="form-group">
+                                <label for="message">询价信息</label><input type="text" class="form-control" id="message" />
+                                <span id="errorMessage" style="display: none;"><font color='red'>询价信息不能为空</font></span>
+                            </div>
+                            <div class="form-group" >
+                                <label for="">询价银行：</label>
+
+                                <div class="form-group">
+                                    <select id="inquiryBankName" name="inquiryBankName"  class="selectpicker show-tick show-menu-arrow" multiple data-live-search="true" ></select>
+                                </div>
+
+                            </div>
+                             <button type="button" class="btn btn-primary submit" id="insertQuiery" >提交</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script type="text/javascript">
+
+</script>
+</html>
