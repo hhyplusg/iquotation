@@ -1,0 +1,11 @@
+{
+     "demos": [
+
+        {
+            "name": "observesystem",
+            "data": "views/data/data.json",
+            "template": "observesystem.html"
+        }
+   
+     ]
+}
