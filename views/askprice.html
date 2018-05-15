@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html class="core" lang="zh-Hans">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>登录</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="copyright" content="众杰能">
+	<meta name="robots" content="index,follow">
+	<meta name="author" content=""> 
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+	<meta property="og:locale" content="zh-Hans">
+    <link rel="stylesheet" type="text/css" href="styles/login.css">
+    
+    <link href='styles/bootstrap.min.css' rel='stylesheet'>
+    <link href='styles/bootstrap-select.min.css' rel='stylesheet'>
+    <link href='styles/bootstrap-datetimepicker.min.css' rel='stylesheet'>
+    <script src="http://static.ftchinese.com/js/jquery-1.10.2.min.js?0"></script>
+    <script src="scripts/login.js"></script>
+</head>
+<body>
+
+  <div class="container">
+    <div class="row clearfix">
+        <!-- -->
+        <div class="col-md-2 column">
+            <h3>
+                向银行询价
+            </h3>
+        </div>
+        <div class="col-md-10 column">
+            <ul class="nav nav-tabs">
+                <li class="dropdown pull-right">
+                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">我的<strong class="caret"></strong></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                             <a href="#">个人资料</a>
+                        </li>
+                        <li class="divider">
+                        </li>
+                        <li>
+                             <a href="#">注销登录</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-8 column">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <form class="form-inline" role="form">
+                        <div class="form-group">
+                            <label for="f1">银行名称</label>
+                            <input type="text" class="form-control" id="bankName" placeholder="银行名称" style="width:150px"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="f1">日期</label>
+                            <div class='input-group date' id='datetimepicker1'>  
+                                <input type='text' class="form-control" style="width:150px"/>  
+                                <span class="input-group-addon">  
+                                    <span class="glyphicon glyphicon-calendar"></span>  
+                                </span>  
+                            </div> 
+                            &nbsp-&nbsp
+                            <div class='input-group date' id='datetimepicker2'>  
+                                <input type='text' class="form-control" style="width:150px"/>  
+                                <span class="input-group-addon">  
+                                    <span class="glyphicon glyphicon-calendar"></span>  
+                                </span>  
+                            </div> 
+                        </div>
+
+                        <button type="button" class="btn btn-default">查询</button>
+                            
+                    </form>
+                </div>
+            </div>
+            <table id="inquiryTable">
+            </table>
+            <table class="table"  id="askPriceData">
+                <thead>
+                    <tr>
+                        <th>
+                            编号
+                        </th>
+                        <th>
+                            产品
+                        </th>
+                        <th>
+                            交付时间
+                        </th>
+                        <th>
+                            状态
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            TB - Monthly
+                        </td>
+                        <td>
+                            01/04/2012
+                        </td>
+                        <td>
+                            Default
+                        </td>
+                    </tr>
+                    <tr class="success">
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            TB - Monthly
+                        </td>
+                        <td>
+                            01/04/2012
+                        </td>
+                        <td>
+                            Approved
+                        </td>
+                    </tr>
+                    <tr class="error">
+                        <td>
+                            2
+                        </td>
+                        <td>
+                            TB - Monthly
+                        </td>
+                        <td>
+                            02/04/2012
+                        </td>
+                        <td>
+                            Declined
+                        </td>
+                    </tr>
+                    <tr class="warning">
+                        <td>
+                            3
+                        </td>
+                        <td>
+                            TB - Monthly
+                        </td>
+                        <td>
+                            03/04/2012
+                        </td>
+                        <td>
+                            Pending
+                        </td>
+                    </tr>
+                    <tr class="info">
+                        <td>
+                            4
+                        </td>
+                        <td>
+                            TB - Monthly
+                        </td>
+                        <td>
+                            04/04/2012
+                        </td>
+                        <td>
+                            Call in to confirm
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4 column">
+            <div class="tabbable" id="tabs-207310">
+                <ul class="nav nav-tabs">
+                    <li>
+                         <a href="#panel-685775" data-toggle="tab">询价记录</a>
+                    </li>
+                    <li class="active">
+                         <a href="#panel-703226" data-toggle="tab">我要询价</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane" id="panel-685775">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        1
+                                    </td>
+                                    
+                                </tr>
+                                <tr class="success">
+                                    <td>
+                                        2
+                                    </td>
+                                    
+                                </tr>
+                                <tr class="error">
+                                    <td>
+                                        3
+                                    </td>
+                                </tr>
+                                <tr class="warning">
+                                    <td>
+                                        3
+                                    </td>
+                                </tr>
+                                <tr class="info">
+                                    <td>
+                                        4
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane active" id="panel-703226">
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="message">询价信息</label><input type="email" class="form-control" id="message" />
+                            </div>
+                            <div class="form-group">
+                                <label for="">询价银行：</label>
+                                <div>
+                                    <select id="usertype" name="usertype" class="selectpicker show-tick form-control" multiple data-live-search="false">
+                                            <option value="0">苹果</option>
+                                            <option value="1">菠萝</option>
+                                            <option value="2">香蕉</option>
+                                            <option value="3">火龙果</option>
+                                            <option value="4">梨子</option>
+                                            <option value="5">草莓</option>
+                                            <option value="6">哈密瓜</option>
+                                            <option value="7">椰子</option>
+                                            <option value="8">猕猴桃</option>
+                                            <option value="9">桃子</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="checkbox">
+                            </div> <button type="submit" class="btn btn-default">提交</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script type="text/javascript">
+
+</script>
+</html>

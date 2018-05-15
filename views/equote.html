@@ -4,49 +4,48 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title> 询价 </title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta name="copyright" content="众杰能">
-	<meta name="robots" content="index,follow">
-	<meta name="author" content=""> 
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="default" />
 	<meta property="og:locale" content="zh-Hans">
-    <link inline rel="stylesheet" type="text/css" href="styles/observe.css">
-    <link href='styles/bootstrap.min.css' rel='stylesheet'>
-    <link href='styles/bootstrap-select.min.css' rel='stylesheet'>
-    <link href='styles/bootstrap-datetimepicker.min.css' rel='stylesheet'>
+
     <script src="http://static.ftchinese.com/js/jquery-1.10.2.min.js?0"></script>
 
-    <style type="text/css">
-        .dropdown-toggle{
-            width: 40px;
-            height: 28px;
-        }
-                
-    </style>
-
+    
+    <link href='bootstrap/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='bootstrap/css/bootstrap-theme.min.css' rel='stylesheet'>
+    <link href='bootstrap/css/bootstrap-select.min.css' rel='stylesheet'>
+    <link href='bootstrap/css/bootstrap-datetimepicker.min.css' rel='stylesheet'>
+    <link inline rel="stylesheet" type="text/css" href="styles/main.css">
 </head>
 <body>
+<div>
 
- <div class="container">
-    <div class="row clearfix">
-        <!-- -->
-        <div class="col-md-2 column">
-            <h3>
-                向银行询价
-            </h3>
-            <jsp:include page="userInfo.jsp"></jsp:include>
+
+ <div class="navigation">
+    <div>
+        <div class="logo">
+            <img src="bootstrap/logo.png"/>
+            <label>向机构报价</label>
         </div>
     </div>
-    <div class="row clearfix" style="width: 1315px">
-        <div class="col-md-8 column" >
-            <div class="row clearfix">
+    <div>
+            <label  class="manager"></label>
+            <label>系统管理员</label>
+            <label id="triangle-down"></label>
+    </div>
+    
+ </div>
+ <div class="right-container">
+ <div class="" >
+    <div class="">
+    <!--<div class="row clearfix">-->
+        <!--<div class="col-md-1 col-xs-12 column color-section"></div>-->
+        <div class="col-xs-12 column center-section">
+            <div class="row clearfix  search-section">
                 <div class="col-md-12 column">
                     <form id="formSearch" class="form-inline" role="form">
-                        <div class="form-group">
-                            <label for="f1">银行名称</label>
-                            <input type="text" class="form-control" id="bankName" placeholder="银行名称" style="width:150px"/>
-                        </div>
                         <div class="form-group">
                             <label for="f1">日期</label>
                             <div class='input-group date' id='quoteDateStart'>  
@@ -55,7 +54,7 @@
                                     <span class="glyphicon glyphicon-calendar"></span>  
                                 </span>  
                             </div> 
-                            &nbsp-&nbsp
+                          
                             <div class='input-group date' id='quoteDateEnd'>  
                                 <input type='text' class="form-control" style="width:150px"/>  
                                 <span class="input-group-addon">  
@@ -64,16 +63,102 @@
                             </div> 
                         </div>
 
-                        <button type="button" id="btn_query" class="btn btn-default" style="width: 72px;height: 34px;">查询</button>&nbsp;
+                        <button type="button" id="btn_query" class="btn btn-primary">查询</button>&nbsp;
                         <table id="quoteTable" >
-                            <input type="button" value="新增报价"  id="btn"  class="btn btn-default" style="width: 72px;height: 34px ;padding-left: 7px"/>
+                            <input type="button" value="新增报价"  id="btn"  class="btn btn-success" style="padding-left: 7px"/>
                         </table>
-                        <!-- <button type="button" id="btn_rest" class="btn btn-primary">重置</button>     -->
                     </form>
                 </div>
             </div>
+
+            <div class="table-section">
+                <div class="table-list-section">
+                    <div>
+                        <span>
+                        <input type="radio" name="male" id="male" />
+                        <label for="male">报价日期</label>
+                        
+                        </span>
+
+                        <span>
+                        <input type="radio" name="female" id="female" />
+                        <label for="female">7天</label>
+                        </span>
+
+                        <span>
+                        <input type="radio" name="female" id="female" />
+                        <label for="female">14天</label>
+                        </span>
+
+                        <span>
+                        <input type="radio" name="female" id="female" />
+                        <label for="female">1月</label>
+                        </span>
+
+                        <span>
+                        <input type="radio" name="female" id="female" />
+                        <label for="female">2月</label>
+                        </span>
+
+                        <span>
+                        <input type="radio" name="female" id="female" />
+                        <label for="female">3月</label>
+                        </span>
+
+                        <span>
+                        <input type="radio" name="female" id="female" />
+                        <label for="female">6月</label>
+                        </span>
+
+                        <span>
+                        <input type="radio" name="female" id="female" />
+                        <label for="female">1年</label>
+                        </span>
+
+                        <span>
+                        <input type="radio" name="female" id="female" />
+                        <label for="female">报价类型</label>
+                        </span>
+                    </div>
+                    <div>
+                        <button type="button" id="btn_refresh" class="btn btn-info">刷新</button>
+                        <button type="button" id="btn_switch" class="btn btn-warning">切换</button>
+                    </div>
+                </div>
+                <div class="table-detail-section">
+                     <table class="table" >
+                         <thead>
+                             <tr>
+                                <th>报价日期</th>
+                                <th>7天</th>
+                                <th>14天</th>
+                                <th>1月</th>
+                                <th>2月</th>
+                                <th>3月</th>
+                                <th>6月</th>
+                                <th>1年</th>
+                                <th>报价类型</th>
+                             </tr>
+                         </thead>
+                         <tbody>
+					    <tr>
+                            <td>111</td>
+                            <td>111</td>
+                            <td>1111</td>
+                            <td>1111</td>
+                            <td>1111</td>
+                            <td>111</td>
+                            <td>1111</td>
+                            <td>111</td>
+                            <td>111</td>
+                        </tr>
+                        </tbody>
+                     </table>
+                </div>
+                <div class="table-paging-section">显示第1列第1条记录</div>
+            </div>
             <div id="modal" class="modal fade">
-                <div class="modal-dialog"  style="width:610px">
+                <div class="modal-dialog"  style="width:650px;">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -84,8 +169,8 @@
                                 <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th colspan="2">报价日期</th>
-                                                    <th colspan="5">选择机构</th>
+                                                    <th colspan="2" >报价日期</th>
+                                                    <th colspan="3" >选择机构</th>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="2">
@@ -98,12 +183,12 @@
                                                             </div> 
                                                         </div>
                                                     </td>
-                                                    <td colspan="5">
+                                                    <td colspan="3">
                                                         <div class="form-group">
-                                                            <select id="slpk" name="corpid" class="selectpicker" data-live-search="true" multiple></select>
+                                                            <select id="slpk" name="ids"  class="selectpicker show-tick show-menu-arrow" multiple data-live-search="true"></select>
                                                         </div>
                                                     </td>
-                                                    <!-- <td colspan="5"><input type="text" name="corpid" size="54"/></td> -->
+     
                                                 </tr>
                                                 <tr>
                                                     <th>7D</th>
@@ -150,9 +235,15 @@
                                                             <input type="text" name="oneyear" size="3"/>
                                                         </div>
                                                     </td>
+                                                    <td style="display: none;">
+                                                        <div class="form-group">
+                                                            <input type=hidden name="inquiryid" size="3"/>
+                                                        </div>
+                                                    </td>
                                                 </tr>
                                                 
                                             </thead>
+                  
                                         </table>
                             </form>
                         </div>
@@ -160,91 +251,82 @@
                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                             <button type="button" class="btn btn-primary submit" id="validateBtn">提交</button>
                         </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
+                    </div>
+                </div>
+            </div>
             
-            <br>
-            
+         
         </div>
-        <div class="col-md-4 column">
+        <div class="col-xs-12  column inquiry-record-section">
+           <div class="record-section">
             <div class="tabbable" id="tabs-207310">
+                
                 <ul class="nav nav-tabs">
                     <li>
-                         <a href="#panel-685775" data-toggle="tab">询价记录</a>
-                    </li>
-                    <li class="active">
-                         <a href="#panel-703226" data-toggle="tab">我要询价</a>
+                         <a id="inquiryRecord" href="#panel-685775" data-toggle="tab">询价记录</a>
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane" id="panel-685775">
-                        <form id="formSearchInquiry" class="form-inline" role="form">
+                    <div class="record-list" id="panel-685775">
+                    <form id="formSearchInquiry" class="form-inline" role="form">
+                            <div class="form-group">日期</div>
                             <div class="form-group">
-                                <div class='input-group date' id='inquiryDateStart' name='inquiryDateStart'>  
-                                    <input type='text' class="form-control" style="width:100px"/>  
+                                <div class='input-group date' id='inquiryDateStart' >  
+                                    <input id='inquiryStartDate' type='text' class="form-control" style="width:100px"/>  
                                     <span class="input-group-addon">  
                                         <span class="glyphicon glyphicon-calendar"></span>  
                                     </span>  
                                 </div> 
-                                &nbsp-&nbsp
                                 <div class='input-group date' id='inquiryDateEnd'>  
-                                    <input type='text' class="form-control" style="width:100px"/>  
+                                    <input id='inquiryEndDate' type='text' class="form-control" style="width:100px"/>  
                                     <span class="input-group-addon">  
                                         <span class="glyphicon glyphicon-calendar"></span>  
                                     </span>  
                                 </div> 
                             </div>
     
-                            <button type="button" id="btn_queryInquiry" class="btn btn-default">查询</button>
-                            <button class="btn btn-default" type="button" id="refresh" name="refresh" title="刷新" style="width: 54px;height: 34px">
-                                <i class="glyphicon glyphicon-refresh icon-refresh" ></i>
-                            </button>
-                        
-                        <div>
-                            <table id="inquiryTable"
-                                   data-height="450"
-                                   data-pagination="true"
-                                   data-side-pagination="client"
-                                   data-page-number="1"
-                                   data-page-size="10"
-                                   data-page-list="[10, 25, 50, 100, All]"
-                                   data-striped="true"
-                                   data-show-header="false"
-                                   
-                                   data-query-params="queryParamsInquiry"
-                                   data-toolbar=".toolbar">
-                                <thead>
-                                <tr>
-                                    <th data-field="inquirycontent">询价内容</th>
-                                </tr>
-                                </thead>
-                            </table>
-                        </div>
+                            <button type="button" id="btn_queryInquiry" class="btn btn-primary">查询</button>
+
                         </form>
+                        <div>
+                        <table id="inquiryTable"
+                               data-height="450"
+                               data-pagination="true"
+                               data-side-pagination="client"
+                               data-page-number="1"
+                               data-page-size="10"
+                               data-page-list="[10, 25, 50, 100, All]"
+                               data-striped="true"
+                               data-show-header="false"
+                               data-query-params="queryParamsInquiry"
+                               data-toolbar=".toolbar">
+                            <thead>
+                            <tr>
+                                <th data-field="inquirycontent">询价内容</th>
+                                <th data-field="id" data-visible="false" id="inquiryid" name="inquiryid"></th>
+                            </tr>
+                            </thead>
+                        </table>
                     </div>
-                    <div class="tab-pane active" id="panel-703226">
-                        <form role="form" id="addInquiry">
-                            <div class="form-group">
-                                <label for="message">询价信息</label><input type="text" class="form-control" id="message" />
-                                <span id="errorMessage" style="display: none;"><font color='red'>询价信息不能为空</font></span>
+                    
                             </div>
-                            <div class="form-group" >
-                                <label for="">询价银行：</label>
-
-                                <div class="form-group">
-                                    <select id="inquiryBankName" name="inquiryBankName"  class="selectpicker show-tick show-menu-arrow" multiple data-live-search="true" ></select>
-                                </div>
-
-                            </div>
-                             <button type="button" class="btn btn-primary submit" id="insertQuiery" >提交</button>
                         </form>
                     </div>
                 </div>
             </div>
+           </div>
+
+
         </div>
     </div>
 </div>
+</div>
+ <!--right-container-->
+
+
+</div>
+
+
 
 </body>
 

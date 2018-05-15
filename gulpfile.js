@@ -9,7 +9,10 @@ const cssnext = require('postcss-cssnext');
 const browserSync = require('browser-sync').create();
 
 
-let cache;
+const rollup = require('rollup').rollup;
+const nodeResolve = require('rollup-plugin-node-resolve');
+const buble = require('rollup-plugin-buble');
+const babel = require('rollup-plugin-babel');
 
 
 const nunjucks = require('nunjucks');
@@ -32,25 +35,24 @@ gulp.task('prod', () => {
 gulp.task('dev', () => {
   return Promise.resolve(process.env.NODE_ENV = 'development');
 });
-  /**
- * 读出数据之后接着循环，再return出promise对象，其实resolve就是promise对象
-   读出对象，把对象render到页面中，渲染并读出需要模板、路径名、渲染页面中的data
-   如果css和js文件不一样，继续在json中添加元素
- */ 
+
 gulp.task('build-page', () => {
   
   const destDir = '.tmp';
   const pathDetail = loadJsonFile('views/data/path-detail.json');
-
+  // const dataPath = 'views/data/data.json';
+  // detail返回promise
   return pathDetail.then(data => {
     const demos = data.demos;
+    //  此运行完之后再返回promise，进行循环返回promise
     return Promise.all(demos.map((demo) => {
       return renderPerView(demo);
     }))
   })
   .then(() => {
-      console.log('inline--'+process.env.NODE_ENV)
+    console.log('inline--'+process.env.NODE_ENV)
       browserSync.reload('*.html');
+      // return Promise.resolve();
     })
     .catch(err => {
       console.log(err);
@@ -65,11 +67,17 @@ gulp.task('build-page', () => {
     const name = demo.name;
     const template = demo.template;
     const dataPath = demo.data;
-
+  
       return loadJsonFile(dataPath)
       .then(data => {
         
-        if (name ==='index'){
+        if (name ==='login'){
+
+          return render(template, {
+            products: data.index,
+            env
+          });
+        }else if (name ==='askprice'){
           return render(template, {
             products: data.index,
             env
@@ -82,16 +90,17 @@ gulp.task('build-page', () => {
         
       })
       .then(html => {  
+        // console.log('process.env.NODE_ENV:'+process.env.NODE_ENV);
         // 此处是development  
-        if (process.env.NODE_ENV === 'production') {
-          return inline(html, {
-            compress: true,
-            rootpath: path.resolve(process.cwd(), '.tmp')
-          });
-        }    
+        // if (process.env.NODE_ENV === 'production') {
+        //   return inline(html, {
+        //     compress: true,
+        //     rootpath: path.resolve(process.cwd(), '.tmp')
+        //   });
+        // }    
         return html;
-        })
-        .then(html => {
+      })
+      .then(html => {
           const destFile = path.resolve(destDir, `${name}.html`);
           return fs.writeAsync(destFile, html);
       })
@@ -101,7 +110,7 @@ gulp.task('build-page', () => {
   
 });
 
-
+// ,'client/bootstrap-3.3.7/*/*.css'
 gulp.task('styles', function styles() {
   const DEST = '.tmp/styles';
   return gulp.src(['client/styles/*.scss'])
@@ -125,6 +134,12 @@ gulp.task('styles', function styles() {
     .pipe(browserSync.stream());
 });
 
+gulp.task('copybt', () => {
+  const dest = '.tmp/bootstrap';
+  return gulp.src(['./client/bootstrap-3.3.7/**'])
+    .pipe(gulp.dest(dest))
+});
+
 
 gulp.task('jshint', function () {
   return gulp.src('client/scripts/**/*.js')
@@ -133,17 +148,42 @@ gulp.task('jshint', function () {
     .pipe($.jshint.reporter('fail'));
 });
 
-gulp.task('scripts', () => {
-  return gulp.src('index.js')
-    .pipe($.plumber())  //自动处理全部错误信息防止因为错误而导致 watch 不正常工作
-    .pipe($.sourcemaps.init({loadMaps:true})) 
-    .pipe($.babel())
-    .pipe($.sourcemaps.write('./'))
-    .pipe(gulp.dest('.tmp/scripts'))
-    .pipe(browserSync.reload({stream: true}));
+// gulp.task('scripts', () => {
+//   return gulp.src('index.js')
+//     .pipe($.plumber())  //自动处理全部错误信息防止因为错误而导致 watch 不正常工作
+//     .pipe($.sourcemaps.init({loadMaps:true})) 
+//     .pipe($.babel())
+//     .pipe($.sourcemaps.write('./'))
+//     .pipe(gulp.dest('.tmp/scripts'))
+//     .pipe(browserSync.reload({stream: true}));
+// });
+
+gulp.task('scripts', async () => {
+  const origami = await fs.readAsync('views/data/path-detail.json','json');
+  const demos = origami.demos;
+  async function rollupOneJs(demo) {
+    const bundle = await rollup({
+      input:`client/scripts/${demo.js}`,
+      plugins:[
+        babel({//这里需要配置文件.babelrc
+          exclude:'node_modules/**'
+        }),
+        nodeResolve({
+          jsnext:true,
+        })
+      ]
+    });
+
+    await bundle.write({//返回promise，以便下一步then()
+        file: `.tmp/scripts/${demo.js}`,
+        format: 'iife',
+        sourcemap: true
+    });
+  }
+  //console.log(demos);
+  await demos.forEach(rollupOneJs);
+  browserSync.reload();
 });
-
-
 
 
 
@@ -171,7 +211,7 @@ gulp.task('jshint', function () {
 });
 
 
-gulp.task('serve', gulp.parallel('build-page', 'styles', 'scripts', () => {
+gulp.task('serve', gulp.parallel('build-page', 'copybt','styles', 'scripts','comJs','comCss' ,() => {
   browserSync.init({
     server: {
       baseDir: ['.tmp'],
@@ -201,10 +241,10 @@ gulp.task('serve', gulp.parallel('build-page', 'styles', 'scripts', () => {
 
 }));
 
-gulp.task('build', gulp.series('prod','clean','styles', 'scripts', 'build-page','comJs','comCss', 'dev'));
+gulp.task('build', gulp.series('prod','clean','copybt','build-page','styles', 'scripts', 'comJs','comCss', 'dev'));
+
 
 const destDir = 'dev_www/frontend/tpl/next/html';
-
 
 gulp.task('copy:prod', () => {
   const src = path.resolve(__dirname, '.tmp/index.html');

@@ -4,17 +4,32 @@
    		{
             "name": "login",
             "data": "views/data/data.json",
-            "template": "login.html"
+            "template": "login.html",
+            "js":"login.js"
         },
    		{
             "name": "inquiry",
             "data": "views/data/data.json",
-            "template": "inquiry.html"
+            "template": "inquiry.html",
+            "js":"user.js"
         },
    		{
             "name": "manager",
             "data": "views/data/data.json",
-            "template": "manager.html"
+            "template": "manager.html",
+            "js":"login.js"
+        },
+        {
+            "name": "askprice",
+            "data": "views/data/data.json",
+            "template": "askprice.html",
+            "js":"login.js"
+        },
+        {
+            "name": "equote",
+            "data": "views/data/data.json",
+            "template": "equote.html",
+            "js":"login.js"
         }
      ]
 }
