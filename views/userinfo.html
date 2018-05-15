@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html class="core" lang="zh-Hans">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title> 询价 </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="copyright" content="众杰能">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+	<meta property="og:locale" content="zh-Hans">
+
+    <script src="http://static.ftchinese.com/js/jquery-1.10.2.min.js?0"></script>
+
+    
+    <link href='bootstrap/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='bootstrap/css/bootstrap-theme.min.css' rel='stylesheet'>
+    <link href='bootstrap/css/bootstrap-select.min.css' rel='stylesheet'>
+    <link href='bootstrap/css/bootstrap-datetimepicker.min.css' rel='stylesheet'>
+    <link inline rel="stylesheet" type="text/css" href="styles/main.css">
+</head>
+<body>
+<div>
+
+
+ <div class="navigation">
+    <div>
+        <div class="logo">
+            <img src="bootstrap/logo.png"/>
+            <label>用户管理</label>
+        </div>
+    </div>
+    <div>
+            <label  class="manager"></label>
+            <label>系统管理员</label>
+            <label id="triangle-down"></label>
+    </div>
+    
+ </div>
+
+
+<dir class="container"> 
+		 <div class="col-md-12 column" >
+			<ul class="nav nav-tabs" id="user" >
+				<li class="dropdown pull-right" id="userOperation"  >
+					<a href="#" data-toggle="dropdown" class="dropdown-toggle" id="userInfo" style="width: auto;height: auto;"><strong class="caret" ></strong></a>
+					<ul class="dropdown-menu" >
+						<li>
+							 <a href="#" id="editPassword">修改密码</a>
+						</li>
+						<li class="divider">
+						</li>
+						<li>
+							 <a href="#" id="loginOut">注销登录</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">修改密码</h4>
+                </div>
+	                <div class="modal-body">
+                		<form>
+							<div class="form-group">
+		                        <input type="hidden" name="id"  value="${userInfo.id }" class="form-control">
+		                    </div>
+		                    <div class="form-group">
+		                        <label for="old_password">原密码</label>
+		                        <input type="text" name="old_password" class="form-control" id="old_password" placeholder="请输入原密码">
+		                    </div>
+		                    <div class="form-group">
+		                        <label for="password">新密码</label>
+		                        <input type="text" name="password" class="form-control" id="password" placeholder="请输入新密码">
+		                    </div>
+		                    <div class="form-group">
+		                        <label for="confirmPassword">确认密码</label>
+		                        <input type="text" name="confirmPassword" class="form-control" id="confirmPassword" placeholder="请再次输入新密码">
+		                    </div>
+		                </div>
+		             </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                    <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>确定修改</button>
+                </div>
+            </div>
+        </div>
+    </div>
+	</dir>
+
+</div>
+
+
+
+</body>
+
+<script type="text/javascript">
+
+</script>
+</html>

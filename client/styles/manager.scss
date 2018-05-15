@@ -1,0 +1,88 @@
+
+@import "./layout/navigation.scss";
+
+@mixin btn{
+    button{
+        height: 30px;
+    }
+}
+body{
+    background-color:$shallowGrey; 
+    height: 100%;
+}
+
+.center{
+    width: 90%;
+    margin: 0 auto;
+    background-color: white; 
+    margin-top: 10px;
+}
+.search-section{
+    
+    padding: 10px 40px;
+    .input-section{
+        @include verticalMiddle;
+        .search-input{
+            width:200px;
+            height: 30px;
+            margin-right: 10px;
+        }
+        .btn-query{
+            margin-right: 10px;
+        }
+        @include btn;
+            
+    }
+
+    .table-list-section{
+        padding: 10px 0px 0px;
+        // @include horizontalSpace;
+        align-items: center;
+        
+        span{
+            margin: 0 5px 0px;
+        }
+        label{
+            font-size: 12px;
+        }
+    }
+}
+
+.table-section{
+    height: 500px;
+    .toolbar{
+        padding: 20px;
+        @include btn;
+    }
+    .table-detail-section{
+        padding: 0px 20px;
+        table{
+            table-layout:fixed;
+            word-wrap:break-word;
+            width: 100%;
+        }
+        th,tr{
+            text-align: center;
+        }
+        table,table tr th, table tr td { border:0.5px solid grey; }
+    }
+
+}
+
+.user-header{
+    background-color: $darkblue;
+    span{
+        font-size: 20px;
+    }
+}
+.add-user{
+    label{
+        font-size: 15px;
+    }
+    span{
+       margin: 0 5px 0px;
+    }
+    .orgniztion-type{
+        margin-right: 20px;
+    }
+}

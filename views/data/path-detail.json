@@ -30,6 +30,12 @@
             "data": "views/data/data.json",
             "template": "equote.html",
             "js":"login.js"
+        },
+        {
+            "name": "userinfo",
+            "data": "views/data/data.json",
+            "template": "userinfo.html",
+            "js":"login.js"
         }
      ]
 }

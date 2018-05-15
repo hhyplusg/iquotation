@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>登录</title>
+	<title>用户管理</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<meta name="copyright" content="众杰能">
 	<meta name="robots" content="index,follow">
@@ -11,47 +11,216 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="default" />
 	<meta property="og:locale" content="zh-Hans">
-	<link inline rel="stylesheet" type="text/css" href="styles/observe.css">
+	<script src="http://static.ftchinese.com/js/jquery-1.10.2.min.js?0"></script>
+ 
+    <link href='bootstrap/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='bootstrap/css/bootstrap-theme.min.css' rel='stylesheet'>
+    <link href='bootstrap/css/bootstrap-select.min.css' rel='stylesheet'>
+    <link href='bootstrap/css/bootstrap-datetimepicker.min.css' rel='stylesheet'>
+
+	<link inline rel="stylesheet" type="text/css" href="styles/manager.css">
 </head>
 <body>
-<div class="container">
-	<div class="title-container">策略观察系统界面</div>
-	<div class="content-container">
-		<div class="float left-container directory">
-			<div class="category">
-				<h3>A 大盘</h3>
-				<h4 class="category_2">A.1 短期_资金类</h4>
-				<ul class="category_3">
-					<li>A.1.1 博弈/存量指标</li>
-					<li>A.1.2 融资买入/可用担保价值</li>
-				</ul>
-				<h4>A.2 短期_情绪类</h4>
-				<ul>
-					<li>A.2.1 综合性情绪指标</li>
-					<li>A.2.2 强势股占比</li>
-					<li>A.2.3 风险偏好</li>
-					<li>A.2.4 换手率</li>
-				</ul>
-				<h4>A.3 长期_板块个股的估值分布</h4>
-			</div>
-			<div class="category">
-				<h3 class="category_1">B 行业/风格</h3>
-				<h4 class="category_2">B.1 短期_行业循环模型</h4>
-				<ul>
-					<li>B.1.1 速度/加速度</li>
-					<li>B.1.2 年化日换手率的历史分位</li>
-				</ul>
-				<h4>B.2 短期_风格活跃度观察：</h4>
-				<ul>
-					<li>B.2.1 板块相对换手率</li>
-				</ul>
-				<h4>B.3 中期_HP滤波后的行业估值</h4>
-			</div>
-		</div>
-		<div class="float right-container">右边</div>
-	</div>
 
+ <div class="navigation">
+    <div class="">
+        <div class="logo">
+            <img src="bootstrap/logo.png"/>
+            <label>用户管理</label>
+        </div>
+    </div>
+    <div class="manager-section">
+            <label  class="manager"></label>
+            <label>系统管理员</label>
+            <label id="triangle-down"></label>
+    </div>
+    
+ </div>
+
+<div class="search-section center">
+	<div class="input-section">
+		<input type='text' class="form-control search-input" placeholder="搜索"/> 
+		<button type="button" id="btn_query" class="btn btn-primary btn-query">查询</button>
+		<button type="button" id="btn_fresh" class="btn btn-info">刷新</button>
+	</div>
+	<div class="table-list-section">
+		<span>
+		<label>列：</label>    
+		</span>
+
+		<span>
+		<input type="checkbox" name="male" id="male" />
+		<label for="male">ID</label>    
+		</span>
+
+		<span>
+		<input type="checkbox" name="female" id="female" />
+		<label for="female">用户名</label>
+		</span>
+
+		<span>
+		<input type="checkbox" name="female" id="female" />
+		<label for="female">机构编码</label>
+		</span>
+
+		<span>
+		<input type="checkbox" name="female" id="female" />
+		<label for="female">机构全称</label>
+		</span>
+
+		<span>
+		<input type="checkbox" name="female" id="female" />
+		<label for="female">机构简称</label>
+		</span>
+
+		<span>
+		<input type="checkbox" name="female" id="female" />
+		<label for="female">机构类型</label>
+		</span>
+
+	
+	</div>
 </div>
+
+<div class="table-section center">
+	<div class="toolbar">
+		<button type="button" class="create btn btn-success">新增用户</button>
+		<button type="button" class="create btn btn-danger">批量删除用户</button>
+		<!--<a class="create btn btn-success" href="javascript:">新增用户</a>
+		<a class="delete btn btn-danger" href="javascript:">批量删除用户</a>-->
+		<span class="alert"></span>
+	</div>
+	<div class="table-detail-section">
+	<table id="table"
+			data-height="600"
+			data-show-refresh="true"
+			data-show-columns="true"
+			data-search="true"
+			data-pagination="true"
+			data-side-pagination="client"
+			data-page-number="1"
+			data-page-size="10"
+			data-page-list="[10, 25, 50, 100, All]"
+			data-query-params="queryParams"
+			data-toolbar=".toolbar"
+			data-striped="true">
+		<thead>
+		<tr>
+			<th data-checkbox="true"></th>
+			<th data-field="id" data-visible=false>id</th>
+			<th data-field="userloginname">用户名</th>
+			<th data-field="corpcode">机构编码</th>
+			<th data-field="corpname">机构全称</th>
+			<th data-field="corpshortname">机构简称</th>
+			<th data-field="corptype">机构类型</th>
+			<th data-field="action"
+				data-align="center"
+				data-formatter="actionFormatter"
+				data-events="actionEvents">操作</th>
+		</tr>
+		</thead>
+	</table>
+	</div>
+</div>
+
+<!--<div class="container">
+        <p class="toolbar">
+            <a class="create btn btn-success" href="javascript:">新增用户</a>
+            <a class="delete btn btn-danger" href="javascript:">批量删除用户</a>
+            <span class="alert"></span>
+        </p>
+        <table id="table"
+               data-height="600"
+               data-show-refresh="true"
+               data-show-columns="true"
+               data-search="true"
+               data-pagination="true"
+			   data-side-pagination="client"
+			   data-page-number="1"
+			   data-page-size="10"
+			   data-page-list="[10, 25, 50, 100, All]"
+               data-query-params="queryParams"
+               data-toolbar=".toolbar"
+               data-striped="true">
+            <thead>
+            <tr>
+                <th data-checkbox="true"></th>
+                <th data-field="id" data-visible=false>id</th>
+                <th data-field="userloginname">用户名</th>
+                <th data-field="corpcode">机构编码</th>
+                <th data-field="corpname">机构全称</th>
+                <th data-field="corpshortname">机构简称</th>
+                <th data-field="corptype">机构类型</th>
+                <th data-field="action"
+                    data-align="center"
+                    data-formatter="actionFormatter"
+                    data-events="actionEvents">操作</th>
+            </tr>
+            </thead>
+        </table>
+    </div>-->
+
+    <div id="modal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header user-header">
+					<span>新增用户</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                	<form id="addForm" class="add-user"> 
+	                    <div class="form-group">
+	                        <label>登陆名</label>
+	                        <input type="text" class="form-control" name="userloginname" placeholder="请输入登陆名">
+	                    </div>
+	                    <div class="form-group">
+	                        <label>密码</label>
+	                        <input type="text" class="form-control" name="password" placeholder="请输入密码">
+	                    </div>
+	                    <div class="form-group">
+	                        <label>确认密码</label>
+	                        <input type="text" class="form-control" name="confirmPassword" placeholder="请再次输入密码">
+	                    </div>
+	                    <div class="form-group">
+	                        <label>机构编码</label>
+	                        <input type="text" class="form-control" name="corpcode" placeholder="请输入机构编码">
+	                    </div>
+	                    <div class="form-group">
+	                        <label>机构全称</label>
+	                        <input type="text" class="form-control" name="corpname" placeholder="请输入机构全称">
+	                    </div>
+	                    <div class="form-group">
+	                        <label>机构简称</label>
+	                        <input type="text" class="form-control" name="corpshortname" placeholder="请输入机构简称">
+	                    </div>
+						<div class="form-group">
+	                        <label class="orgniztion-type">机构类型</label>
+	
+							<span>
+	                        <input type="radio" name="orgniztionType" id="bank" />
+							<label for="bank">银行用户</label>
+							</span>
+
+							<span>
+							<input type="radio" name="orgniztionType" id="institutional " />
+							<label for="institutional ">机构用户</label>
+							</span>
+
+							<span>
+							<input type="radio" name="orgniztionType" id="manager" />
+							<label for="manager">管理员</label>
+							</span>
+	                    </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-info submit" id="validateBtn">提交</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
 </body>
 

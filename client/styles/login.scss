@@ -7,6 +7,12 @@ body{
     // background: url('../bootstrap/loginBackground.png')top center no-repeat; 
     // background-size:cover;
 }
+.logo{
+    position: absolute;
+    top:20px;
+    left:20px;
+    width: 100px;
+}
 .login-container {
     position: fixed;
     margin: 0px auto;
