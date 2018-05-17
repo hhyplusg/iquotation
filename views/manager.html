@@ -13,10 +13,10 @@
 	<meta property="og:locale" content="zh-Hans">
 	<script src="http://static.ftchinese.com/js/jquery-1.10.2.min.js?0"></script>
  
-    <link href='bootstrap/css/bootstrap.min.css' rel='stylesheet'>
-    <link href='bootstrap/css/bootstrap-theme.min.css' rel='stylesheet'>
-    <link href='bootstrap/css/bootstrap-select.min.css' rel='stylesheet'>
-    <link href='bootstrap/css/bootstrap-datetimepicker.min.css' rel='stylesheet'>
+    <link href='plugin/bootstrap/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='plugin/bootstrap/css/bootstrap-theme.min.css' rel='stylesheet'>
+    <link href='plugin/bootstrap/css/bootstrap-select.min.css' rel='stylesheet'>
+    <link href='plugin/bootstrap/css/bootstrap-datetimepicker.min.css' rel='stylesheet'>
 
 	<link inline rel="stylesheet" type="text/css" href="styles/manager.css">
 </head>
@@ -49,34 +49,34 @@
 		</span>
 
 		<span>
-		<input type="checkbox" name="male" id="male" />
+		<input type="checkbox" name="id" data-field="id" value="1"/>
 		<label for="male">ID</label>    
 		</span>
 
 		<span>
-		<input type="checkbox" name="female" id="female" />
-		<label for="female">用户名</label>
+		<input type="checkbox" name="userloginname" data-field="userloginname"  value="2" />
+		<label for="userloginname">用户名</label>
 		</span>
 
 		<span>
-		<input type="checkbox" name="female" id="female" />
-		<label for="female">机构编码</label>
+		<input type="checkbox" name="corpcode" data-field="corpcode" value="3" />
+		<label for="corpcode">机构编码</label>
 		</span>
 
 		<span>
-		<input type="checkbox" name="female" id="female" />
+		<input type="checkbox" name="corpname" data-field="corpname"  value="4"/>
 		<label for="female">机构全称</label>
 		</span>
 
 		<span>
-		<input type="checkbox" name="female" id="female" />
+		<input type="checkbox" name="corpshortname" data-field="corpshortname"  value="5"/>
 		<label for="female">机构简称</label>
 		</span>
 
-		<span>
-		<input type="checkbox" name="female" id="female" />
-		<label for="female">机构类型</label>
-		</span>
+                <span>
+                <input type="checkbox" name="corptype" data-field="corptype"  value="6"/>
+                <label for="corptype">机构类型</label>
+                </span>
 
 	
 	</div>
@@ -85,7 +85,7 @@
 <div class="table-section center">
 	<div class="toolbar">
 		<button type="button" class="create btn btn-success">新增用户</button>
-		<button type="button" class="create btn btn-danger">批量删除用户</button>
+		<button type="button" class="delete btn btn-danger">批量删除用户</button>
 		<!--<a class="create btn btn-success" href="javascript:">新增用户</a>
 		<a class="delete btn btn-danger" href="javascript:">批量删除用户</a>-->
 		<span class="alert"></span>
@@ -198,17 +198,17 @@
 	                        <label class="orgniztion-type">机构类型</label>
 	
 							<span>
-	                        <input type="radio" name="orgniztionType" id="bank" />
+	                        <input type="radio" name="orgniztionType" id="bank" value="1" />
 							<label for="bank">银行用户</label>
 							</span>
 
 							<span>
-							<input type="radio" name="orgniztionType" id="institutional " />
+							<input type="radio" name="orgniztionType" id="institutional "value="2"  />
 							<label for="institutional ">机构用户</label>
 							</span>
 
 							<span>
-							<input type="radio" name="orgniztionType" id="manager" />
+							<input type="radio" name="orgniztionType" id="manager" value="3" />
 							<label for="manager">管理员</label>
 							</span>
 	                    </div>

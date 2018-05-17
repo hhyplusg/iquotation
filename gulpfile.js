@@ -135,11 +135,17 @@ gulp.task('styles', function styles() {
 });
 
 gulp.task('copybt', () => {
-  const dest = '.tmp/bootstrap';
+  const dest = '.tmp/plugin/bootstrap';
   return gulp.src(['./client/bootstrap-3.3.7/**'])
     .pipe(gulp.dest(dest))
 });
+gulp.task('copybtable', () => {
+  const dest = '.tmp/plugin';
+  return gulp.src(['./bower_components/bootstrap-table/dist/**'])
+    .pipe(gulp.dest(dest))
+});
 
+gulp.task('bootstrap', gulp.series('copybt','copybtable'));
 
 gulp.task('jshint', function () {
   return gulp.src('client/scripts/**/*.js')
@@ -211,7 +217,7 @@ gulp.task('jshint', function () {
 });
 
 
-gulp.task('serve', gulp.parallel('build-page', 'copybt','styles', 'scripts','comJs','comCss' ,() => {
+gulp.task('serve', gulp.parallel('build-page', 'bootstrap','styles', 'scripts','comJs','comCss' ,() => {
   browserSync.init({
     server: {
       baseDir: ['.tmp'],
@@ -241,7 +247,7 @@ gulp.task('serve', gulp.parallel('build-page', 'copybt','styles', 'scripts','com
 
 }));
 
-gulp.task('build', gulp.series('prod','clean','copybt','build-page','styles', 'scripts', 'comJs','comCss', 'dev'));
+gulp.task('build', gulp.series('prod','clean','bootstrap','build-page','styles', 'scripts', 'comJs','comCss', 'dev'));
 
 
 const destDir = 'dev_www/frontend/tpl/next/html';
