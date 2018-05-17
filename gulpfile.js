@@ -135,7 +135,7 @@ gulp.task('styles', function styles() {
 });
 
 gulp.task('copybt', () => {
-  const dest = '.tmp/plugin/bootstrap';
+  const dest = '.tmp/bootstrap';
   return gulp.src(['./client/bootstrap-3.3.7/**'])
     .pipe(gulp.dest(dest))
 });
@@ -144,8 +144,19 @@ gulp.task('copybtable', () => {
   return gulp.src(['./bower_components/bootstrap-table/dist/**'])
     .pipe(gulp.dest(dest))
 });
+gulp.task('sweetAlert', () => {
+  const dest = '.tmp/sweetAlert';
+  return gulp.src(['./client/sweetAlert/**'])
+    .pipe(gulp.dest(dest))
+});
 
-gulp.task('bootstrap', gulp.series('copybt','copybtable'));
+gulp.task('jquery', () => {
+  const dest = '.tmp/jquery';
+  return gulp.src(['./client/jquery/**'])
+    .pipe(gulp.dest(dest))
+});
+
+gulp.task('bootstrap', gulp.series('copybt','sweetAlert','jquery'));
 
 gulp.task('jshint', function () {
   return gulp.src('client/scripts/**/*.js')

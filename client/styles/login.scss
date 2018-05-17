@@ -1,12 +1,27 @@
 
 @import "./layout/base.scss";
 
+// @media (min-width: 900px){
+//     body{
+//         background:url("../bootstrap/2048_1536.png") center center no-repeat;
+//         background-size: 100%;
+//         background-attachment: fixed;
+//     }
+// }
+
+// @media (max-width: 900px){
+//     body{
+//         background:url("../bootstrap/2048_1536.png") center center no-repeat;
+//         background-size: cover;
+//         background-attachment: fixed;
+//     }
+// }
 body{
-    background:url("../plugin/bootstrap/loginBackground.png") no-repeat;
+    background:url("../bootstrap/2048_1536.png") center center no-repeat;
     background-size: 100%;
-    // background: url('../bootstrap/loginBackground.png')top center no-repeat; 
-    // background-size:cover;
+    background-attachment: fixed;
 }
+
 .logo{
     position: absolute;
     top:20px;
@@ -36,19 +51,27 @@ body{
     left: 10%;
     margin-bottom: 10px;
     width:80%; 
-    // border: 2px solid #a1a1a1;
-    // border-radius: 2px;
     #rememberMe{
         margin-right: 5px;
-        border: 1px solid #ccc;
+        border: 1px solid $shallowGrey;
     }
     label{
         font-size: 12px;
+            
     }
     input{
-        border: 2px solid white;
+        border: 2px solid $shallowGrey;
         border-radius: 3px;
-    }    
+        // height: 20px;
+    } 
+   
+}
+.remember-center{
+    display: flex;
+    align-items: center;
+    input{
+        height: 20px;
+    }
 }
 .username {
     width:100%; 

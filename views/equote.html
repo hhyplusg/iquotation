@@ -3,20 +3,37 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title> 询价 </title>
+	<title>向银行询价</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta name="copyright" content="众杰能">
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="default" />
 	<meta property="og:locale" content="zh-Hans">
 
-    <script src="http://static.ftchinese.com/js/jquery-1.10.2.min.js?0"></script>
+	<script src="/jquery/jquery-3.3.1.min.js"></script>
 
-    
-    <link href='plugin/bootstrap/css/bootstrap.min.css' rel='stylesheet'>
-    <link href='plugin/bootstrap/css/bootstrap-theme.min.css' rel='stylesheet'>
-    <link href='plugin/bootstrap/css/bootstrap-select.min.css' rel='stylesheet'>
-    <link href='plugin/bootstrap/css/bootstrap-datetimepicker.min.css' rel='stylesheet'>
+    <link href='bootstrap/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='bootstrap/css/bootstrap-theme.min.css' rel='stylesheet'>
+    <link href='bootstrap/css/bootstrap-select.min.css' rel='stylesheet'>
+    <link href='bootstrap/css/bootstrap-datetimepicker.min.css' rel='stylesheet'>
+	<link rel="stylesheet" type="text/css" href="bootstrap/plugins/validator/css/bootstrapValidator.min.css">
+	<link rel="stylesheet" href="/bootstrap/plugins/bootstrap-table/bootstrap-table.css">
+    <link rel="stylesheet" href="/bootstrap/plugins/validator/css/bootstrapValidator.min.css">
+    <link rel="stylesheet" type="text/css" href="./sweetAlert/css/sweet-alert.css">
+
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="./bootstrap/js/moment-with-locales.js"></script>
+	<script src="bootstrap/plugins/bootstrap-table/extensions/toolbar/bootstrap-table-toolbar.min.js"></script>
+	<script src="bootstrap/plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"></script>
+	<script src="bootstrap/plugins/bootstrap-table/extensions/export/bootstrap-table-export.min.js"></script>
+    <script type="text/javascript" src="./bootstrap/js/bootstrap-select.min.js"></script>
+
+    <script type="text/javascript" src="./bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="./bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+	
+	<script type="text/javascript" src="./sweetAlert/js/sweet-alert.min.js"></script> 
+
     <link inline rel="stylesheet" type="text/css" href="styles/main.css">
 </head>
 <body>
@@ -24,24 +41,35 @@
 
 
  <div class="navigation">
-    <div>
+    <div class="">
         <div class="logo">
-            <img src="bootstrap/logo.png"/>
-            <label>向机构报价</label>
+            <img src="./bootstrap/logo.png"/>
+            <label>向银行询价</label>
         </div>
     </div>
-    <div>
+    <div class="manager-section">
             <label  class="manager"></label>
             <label>系统管理员</label>
             <label id="triangle-down"></label>
     </div>
+	<div class="drop-down" >
+		<ul id="user" >
+			<li>
+				<a href="#" id="editPassword">修改密码</a>
+			</li>
+			<li class="divider">
+			</li>
+			<li>
+				<a href="#" id="loginOut">注销登录</a>
+			</li>
+		</ul>
+	</div>
     
  </div>
+
  <div class="right-container">
  <div class="" >
     <div class="">
-    <!--<div class="row clearfix">-->
-        <!--<div class="col-md-1 col-xs-12 column color-section"></div>-->
         <div class="col-xs-12 column center-section">
             <div class="row clearfix  search-section">
                 <div class="col-md-12 column">
@@ -64,98 +92,26 @@
                         </div>
 
                         <button type="button" id="btn_query" class="btn btn-primary">查询</button>&nbsp;
-                        <table id="quoteTable" >
+                        <!--<table id="quoteTable" >-->
                             <input type="button" value="新增报价"  id="btn"  class="btn btn-success" style="padding-left: 7px"/>
-                        </table>
+                        <!--</table>-->
                     </form>
                 </div>
             </div>
 
             <div class="table-section">
-                <div class="table-list-section">
-                    <div>
-                        <span>
-                        <input type="radio" name="male" id="male" />
-                        <label for="male">报价日期</label>
-                        
-                        </span>
-
-                        <span>
-                        <input type="radio" name="female" id="female" />
-                        <label for="female">7天</label>
-                        </span>
-
-                        <span>
-                        <input type="radio" name="female" id="female" />
-                        <label for="female">14天</label>
-                        </span>
-
-                        <span>
-                        <input type="radio" name="female" id="female" />
-                        <label for="female">1月</label>
-                        </span>
-
-                        <span>
-                        <input type="radio" name="female" id="female" />
-                        <label for="female">2月</label>
-                        </span>
-
-                        <span>
-                        <input type="radio" name="female" id="female" />
-                        <label for="female">3月</label>
-                        </span>
-
-                        <span>
-                        <input type="radio" name="female" id="female" />
-                        <label for="female">6月</label>
-                        </span>
-
-                        <span>
-                        <input type="radio" name="female" id="female" />
-                        <label for="female">1年</label>
-                        </span>
-
-                        <span>
-                        <input type="radio" name="female" id="female" />
-                        <label for="female">报价类型</label>
-                        </span>
-                    </div>
+                <!--<div class="table-list-section">
                     <div>
                         <button type="button" id="btn_refresh" class="btn btn-info">刷新</button>
                         <button type="button" id="btn_switch" class="btn btn-warning">切换</button>
                     </div>
-                </div>
+                </div>-->
                 <div class="table-detail-section">
-                     <table class="table" >
-                         <thead>
-                             <tr>
-                                <th>报价日期</th>
-                                <th>7天</th>
-                                <th>14天</th>
-                                <th>1月</th>
-                                <th>2月</th>
-                                <th>3月</th>
-                                <th>6月</th>
-                                <th>1年</th>
-                                <th>报价类型</th>
-                             </tr>
-                         </thead>
-                         <tbody>
-					    <tr>
-                            <td>111</td>
-                            <td>111</td>
-                            <td>1111</td>
-                            <td>1111</td>
-                            <td>1111</td>
-                            <td>111</td>
-                            <td>1111</td>
-                            <td>111</td>
-                            <td>111</td>
-                        </tr>
-                        </tbody>
+        
+                    <table id="quoteTable">
+
                      </table>
                 </div>
-                <div class="table-paging-section">显示第1列第1条记录</div>
             </div>
             <div id="modal" class="modal fade">
                 <div class="modal-dialog"  style="width:650px;">
@@ -265,6 +221,9 @@
                     <li>
                          <a id="inquiryRecord" href="#panel-685775" data-toggle="tab">询价记录</a>
                     </li>
+                    <li>
+                         <a id="inquiryRecord" href="#panel-685775" data-toggle="tab">我要询价</a>
+                    </li>
                 </ul>
                 <div class="tab-content">
                     <div class="record-list" id="panel-685775">
@@ -272,13 +231,13 @@
                             <div class="form-group">日期</div>
                             <div class="form-group">
                                 <div class='input-group date' id='inquiryDateStart' >  
-                                    <input id='inquiryStartDate' type='text' class="form-control" style="width:100px"/>  
+                                    <input id='inquiryStartDate' type='text' class="form-control" />  
                                     <span class="input-group-addon">  
                                         <span class="glyphicon glyphicon-calendar"></span>  
                                     </span>  
                                 </div> 
                                 <div class='input-group date' id='inquiryDateEnd'>  
-                                    <input id='inquiryEndDate' type='text' class="form-control" style="width:100px"/>  
+                                    <input id='inquiryEndDate' type='text' class="form-control" />  
                                     <span class="input-group-addon">  
                                         <span class="glyphicon glyphicon-calendar"></span>  
                                     </span>  
@@ -327,10 +286,13 @@
 </div>
 
 
-
+<script src="scripts/equote.js"></script>
+<script>
+     $(".manager-section").on("click", function(){
+        $(".drop-down").toggle();
+    });
+</script>
 </body>
 
-<script type="text/javascript">
 
-</script>
 </html>

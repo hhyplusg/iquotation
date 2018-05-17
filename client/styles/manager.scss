@@ -50,9 +50,9 @@ body{
 }
 
 .table-section{
-    height: 500px;
+    height: 600px;
     .toolbar{
-        padding: 20px;
+        // padding: 20px;
         @include btn;
     }
     .table-detail-section{
@@ -62,10 +62,10 @@ body{
             word-wrap:break-word;
             width: 100%;
         }
-        th,tr{
+        td,tr{
             text-align: center;
         }
-        table,table tr th, table tr td { border:0.5px solid grey; }
+        // table,table tr th, table tr td { border:0.5px solid grey; }
     }
 
 }
@@ -86,4 +86,8 @@ body{
     .orgniztion-type{
         margin-right: 20px;
     }
+}
+
+ .fixed-table-container thead th .th-inner,.fixed-table-container tbody td .th-inner{
+        white-space: initial;
 }

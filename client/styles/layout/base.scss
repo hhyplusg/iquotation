@@ -1,9 +1,8 @@
 $default: white;
 $darkblue:#2d8cf0;
 $blue:blue;
-$red: #9E2F50;
-$darkGreen: #27757b;
-$darkGrey: #333333;
+$darkGreen: #418117;
+$darkGrey: #a7a7a7 ;
 $shallowGrey: #eee;
 * {
 	margin:0;
@@ -11,11 +10,14 @@ $shallowGrey: #eee;
 	box-sizing: border-box;
 }
 body {
-	font-family:"Helvetica Neue","Verdana","Arial","Hiragino Sans GB","WenQuanYi Micro Hei","Heiti SC",STHeiti,"Microsoft Yahei",SimSun,sans-serif;
-	font-size:16px;
+    font-family: Microsoft YaHei;
+	// font-family:"Helvetica Neue","Verdana","Arial","Hiragino Sans GB","WenQuanYi Micro Hei","Heiti SC",STHeiti,"Microsoft Yahei",SimSun,sans-serif;
+	font-size:14px;
 	margin:0 auto;
 	display:block;
 	background: $default none repeat scroll 0 0;
+    width:100%;
+    height:100%
 }
 div {
 	text-align: left;
@@ -26,13 +28,11 @@ img {
 	max-width:100%;
 }
 a {
-    color: $darkGreen;
+    color: $darkGrey;
     text-decoration: none;
     &:hover, &:active {
-		color: $darkGrey;
-	}
-	&.highlight {
-		color: $red;
+        text-decoration: none;
+		color: $darkGreen;
 	}
 }
 ul,li{
@@ -40,6 +40,7 @@ ul,li{
 	list-style-type:none;
 	margin:0;
 	padding:0;
+    text-decoration:none;
 }
 .clearfloat{
 	clear:both;

@@ -59,7 +59,7 @@ button{
     th,tr{
         text-align: center;
     }
-    table,table tr th, table tr td { border:0.5px solid grey; }
+    // table,table tr th, table tr td { border:0.5px solid grey; }
     .table-paging-section{
         padding: 10px;
     }
@@ -75,7 +75,17 @@ button{
     //     padding: 10px 10px;
     // }
 }
-
+#formSearchInquiry{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .input-group{
+        width: 120px;
+    }
+    .form-group{
+       
+    }
+}
 
 
 @mixin container-XL {
@@ -112,7 +122,9 @@ button{
 @media (max-width: 900px){
     @include container-S;
 }
-
+.fixed-table-container thead th .th-inner,.fixed-table-container tbody td .th-inner{
+        white-space: initial;
+}
 
 
 // .logo{

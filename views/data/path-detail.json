@@ -17,7 +17,7 @@
             "name": "manager",
             "data": "views/data/data.json",
             "template": "manager.html",
-            "js":"login.js"
+            "js":"manager.js"
         },
         {
             "name": "askprice",
@@ -29,7 +29,7 @@
             "name": "equote",
             "data": "views/data/data.json",
             "template": "equote.html",
-            "js":"login.js"
+            "js":"equote.js"
         },
         {
             "name": "userinfo",
