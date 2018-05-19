@@ -1,9 +1,6 @@
 @import "./layout/base.scss";
 @import "./layout/navigation.scss";
-body{
-    background-color:$shallowGrey; 
-    height: 100%;
-}
+
 
 
 .color-section{
@@ -56,10 +53,12 @@ button{
         margin: 0 10px;
     }
     table{table-layout:fixed;word-wrap:break-word;}
-    th,tr{
+    td,th{
         text-align: center;
     }
-    // table,table tr th, table tr td { border:0.5px solid grey; }
+    .th-inner {
+        display:inline-block;
+    }
     .table-paging-section{
         padding: 10px;
     }
@@ -90,7 +89,7 @@ button{
 
 @mixin container-XL {
     .table-section{
-        height: 500px;
+        height: 600px;
     }
     .center-section{
         width: 65%;
@@ -99,7 +98,7 @@ button{
         width: 35%;
     }
     .record-section{
-        height: 584px;
+        height: 684px;
     }
 }
 

@@ -44,27 +44,29 @@
     <div class="">
         <div class="logo">
             <img src="./bootstrap/logo.png"/>
-            <label>向银行询价</label>
+            <!-- <label id="company-logo"><label> -->
+            <label id="page-title">向银行询价</label>
         </div>
     </div>
-    <div class="manager-section">
-            <label  class="manager"></label>
-            <label>系统管理员</label>
-            <label id="triangle-down"></label>
+    <div class="hover-cls">
+        <div class="manager-section">
+                <label  class="manager"></label>
+                <label id="userInfo">系统管理员</label>
+                <label id="triangle-down"></label>
+        </div>
+    	<!-- <div class="drop-down" > -->
+    		<ul class="drop-down" id="user" >
+    			<li>
+    				<a href="#" id="editPassword">修改密码</a>
+    			</li>
+    			<li class="divider">
+    			</li>
+    			<li>
+    				<a href="#" id="loginOut">注销登录</a>
+    			</li>
+    		</ul>
+    	<!-- </div> -->
     </div>
-	<div class="drop-down" >
-		<ul id="user" >
-			<li>
-				<a href="#" id="editPassword">修改密码</a>
-			</li>
-			<li class="divider">
-			</li>
-			<li>
-				<a href="#" id="loginOut">注销登录</a>
-			</li>
-		</ul>
-	</div>
-    
  </div>
 
  <div class="right-container">
@@ -222,7 +224,7 @@
                          <a id="inquiryRecord" href="#panel-685775" data-toggle="tab">询价记录</a>
                     </li>
                     <li>
-                         <a id="inquiryRecord" href="#panel-685775" data-toggle="tab">我要询价</a>
+                         <a id="Iinquiry" href="#panel-685775" data-toggle="tab">我要询价</a>
                     </li>
                 </ul>
                 <div class="tab-content">
@@ -236,6 +238,7 @@
                                         <span class="glyphicon glyphicon-calendar"></span>  
                                     </span>  
                                 </div> 
+                                &nbsp-&nbsp
                                 <div class='input-group date' id='inquiryDateEnd'>  
                                     <input id='inquiryEndDate' type='text' class="form-control" />  
                                     <span class="input-group-addon">  
@@ -245,6 +248,7 @@
                             </div>
     
                             <button type="button" id="btn_queryInquiry" class="btn btn-primary">查询</button>
+                            <button type="button" id="btn_queryInquiry" class="btn btn-success">刷新</button>
 
                         </form>
                         <div>
@@ -291,6 +295,29 @@
      $(".manager-section").on("click", function(){
         $(".drop-down").toggle();
     });
+
+    //  $(".drop-down").mouseout(function(){
+    //   $(".drop-down").hide();
+    //   console.log('hide');
+    // });
+
+    // $(".hover-cls").mouseleave(function(){
+    //   $(".drop-down").hide();
+    //   console.log('hide1');
+    // });
+
+    // $(".hover-cls").mouseover(function(){
+    //   $(".drop-down").show();
+    //   console.log('show1');
+    // });
+     
+    // $('.hover-cls').hover(function() {
+    //     // $(".drop-down").slideDown(200);
+    //     $(".drop-down").show();
+    //  }, function() {
+    //     // $(".drop-down").slideUp(200);
+    //     $(".drop-down").hide();
+    //  });
 </script>
 </body>
 
