@@ -30,10 +30,12 @@
         <div class = "title-section">存款业务询报价系统</div>
 
         <div class = "input-section">
-            <input class="username" maxLength="12" name="UserName"> 
+            <input class="username" maxLength="12" name="UserName" placeholder="用户名"> 
+            <div class="error-hint" id="user-error">用户名或密码有误，请核对</div>
         </div>
         <div class = "input-section">
-            <input class="password" maxLength="12" name="password"> 
+            <input  type="password" class="password"  maxLength="12" id="password"  name="password" placeholder="密 码">
+            <div class="error-hint" id="pw-error">用户名或密码有误，请核对</div>
         </div>
         <div class = "input-section">
             <div class = "remember-center leftFloat">
@@ -43,7 +45,7 @@
             <div  class = "rightFloat"><a>忘记密码</a></div>
             <div class="clearfloat"></div>
         </div>
-        <button class="login-btn" type="submit" onclick="verifyEmailOrPassword()">登录</button>
+        <button class="login-btn" type="submit">登录</button>
 
 </div>
     </div>
@@ -55,6 +57,39 @@
 </body>
 
 <script type="text/javascript">
+
+
+ function verifyUser() {
+    var username = $('.username').val();
+    var regexp =/^[a-zA-Z0-9_\.]+$/;
+    if (!username){
+        
+        $('#user-error').html('用户名不能为空');
+        $("#user-error").show();
+    }else{
+        if(!regexp.test(username)){
+            $('#user-error').html('用户名只能包含大写、小写、数字和下划线');
+            $("#user-error").show();
+
+        }else{
+            $("#user-error").hide();
+        }
+    }  
+}
+function verifyPassword() {
+    var password = $('.password').val();
+    if (!password){
+        $('#pw-error').html('密码不能为空');
+        $("#pw-error").show();
+    }  
+}
+    
+$(".username").blur(function(){
+  verifyUser();
+});
+$(".password").blur(function(){
+  verifyPassword();
+});
 
 </script>
 </html>

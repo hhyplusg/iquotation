@@ -1,19 +1,11 @@
 
 @import "./layout/navigation.scss";
 
-@mixin btn{
-    button{
-        height: 30px;
-        padding: 2px 10px;
-    }
-}
-body{
-    background-color:$shallowGrey; 
-    height: 100%;
-}
+
+
 
 .center{
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
     background-color: white; 
     margin-top: 10px;
@@ -25,7 +17,7 @@ body{
         @include verticalMiddle;
         .search-input{
             width:200px;
-            height: 30px;
+            height: 34px;
             margin-right: 10px;
         }
         .btn-query{
@@ -62,20 +54,18 @@ body{
             word-wrap:break-word;
             width: 100%;
         }
-        td,tr{
+        td,th{
             text-align: center;
+        }
+        .th-inner {
+            display:inline-block;
         }
         // table,table tr th, table tr td { border:0.5px solid grey; }
     }
 
 }
 
-.user-header{
-    background-color: $darkblue;
-    span{
-        font-size: 20px;
-    }
-}
+
 .add-user{
     label{
         font-size: 15px;
@@ -90,4 +80,31 @@ body{
 
  .fixed-table-container thead th .th-inner,.fixed-table-container tbody td .th-inner{
         white-space: initial;
+}
+
+
+    
+
+@mixin table-XL {
+
+
+}
+
+@mixin table-S {
+    .table-section{
+       // height: 700px;
+        .search{
+            float: left!important;
+            width: 60%;
+        }
+    }
+     
+}
+
+@media (min-width: 800px){
+    @include table-XL;
+}
+
+@media (max-width: 800px){
+    @include table-S;
 }
