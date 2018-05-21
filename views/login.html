@@ -35,9 +35,13 @@
         <div class = "input-section">
             <input class="password" maxLength="12" name="password"> 
         </div>
-        <div class = "input-section remember-center">
-            <input type="checkbox" id="rememberMe"  name="rememberMe" checked>
-            <label for="rememberMe">记住账号</label>
+        <div class = "input-section">
+            <div class = "remember-center leftFloat">
+                <input type="checkbox" id="rememberMe"  name="rememberMe" checked>
+                <label for="rememberMe">记住账号</label>
+            </div>
+            <div  class = "rightFloat"><a>忘记密码</a></div>
+            <div class="clearfloat"></div>
         </div>
         <button class="login-btn" type="submit" onclick="verifyEmailOrPassword()">登录</button>
 
