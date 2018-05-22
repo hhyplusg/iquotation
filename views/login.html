@@ -31,11 +31,11 @@
 
         <div class = "input-section">
             <input class="username" maxLength="12" name="UserName" placeholder="用户名"> 
-            <div class="error-hint" id="user-error">用户名或密码有误，请核对</div>
+            <div class="error-hint" id="user-error"></div>
         </div>
         <div class = "input-section">
             <input  type="password" class="password"  maxLength="12" id="password"  name="password" placeholder="密 码">
-            <div class="error-hint" id="pw-error">用户名或密码有误，请核对</div>
+            <div class="error-hint" id="pw-error"></div>
         </div>
         <div class = "input-section">
             <div class = "remember-center leftFloat">
@@ -45,7 +45,7 @@
             <div  class = "rightFloat"><a>忘记密码</a></div>
             <div class="clearfloat"></div>
         </div>
-        <button class="login-btn" type="submit">登录</button>
+        <button class="login-btn" type="submit" id="login">登录</button>
 
 </div>
     </div>
@@ -90,6 +90,37 @@ $(".username").blur(function(){
 $(".password").blur(function(){
   verifyPassword();
 });
+
+$("#login").on("click", function(){
+    login();
+});
+
+function login(){
+    var row = {};
+    $('.row').find('input[name]').each(function () {
+          row[$(this).attr('name')] = $(this).val();
+    });
+    $.ajax({
+        url: basePath+'/login',
+        type: 'POST',
+        contentType: 'application/json;charset=utf-8',
+        data:  JSON.stringify(row),
+        success: function (data) {
+            if(data.page == "1"){
+                 window.location.href = projectPath + "/equote.jsp";
+            }else if(data.page == "2" ){
+                window.location.href = projectPath + "/inquiry.jsp";
+            }else if(data.page == "3"){
+                window.location.href = projectPath + "/manager.jsp";
+            }else{
+                $('#pw-error').html('用户名或密码有误，请核对');
+                $("#pw-error").show();
+            }
+        },
+        error: function () {
+        }
+    });
+};
 
 </script>
 </html>
