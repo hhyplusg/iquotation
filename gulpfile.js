@@ -228,7 +228,7 @@ gulp.task('jshint', function () {
 });
 
 
-gulp.task('serve', gulp.parallel('build-page', 'bootstrap','styles', 'scripts','comJs','comCss' ,() => {
+gulp.task('serve', gulp.parallel('build-page', 'bootstrap','styles', 'scripts','comCss' ,() => {
   browserSync.init({
     server: {
       baseDir: ['.tmp'],
