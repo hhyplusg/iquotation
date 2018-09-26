@@ -1,26 +1,22 @@
 
 @import "./layout/base.scss";
 
-// @media (min-width: 900px){
-//     body{
-//         background:url("../bootstrap/2048_1536.png") center center no-repeat;
-//         background-size: 100%;
-//         background-attachment: fixed;
-//     }
-// }
+@media (min-width: 900px){
+     body{
+         background:url("../bootstrap/2048_1536.png") center center no-repeat;
+        background-size: 100%;
+         background-attachment: fixed;
+     }
+ }
 
-// @media (max-width: 900px){
-//     body{
-//         background:url("../bootstrap/2048_1536.png") center center no-repeat;
-//         background-size: cover;
-//         background-attachment: fixed;
-//     }
-// }
-body{
-    background:url("../bootstrap/2048_1536.png") center center no-repeat;
-    background-size: 100%;
-    background-attachment: fixed;
+ @media (max-width: 900px){
+     body{
+         background:url("../bootstrap/2048_1536.png") center center no-repeat;
+        // background-size: cover;
+       //  background-attachment: fixed;
+     }
 }
+
 
 .logo{
     position: absolute;
@@ -236,6 +232,12 @@ body{
 .error-hint{
   margin-top: 5px;
   color: red;  
-  font-size:2px;
+  font-size:12px;
   display: none;
 }    
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}
