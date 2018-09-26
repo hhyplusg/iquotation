@@ -1,0 +1,408 @@
+// 页面高度，宽度
+var _PageHeight = document.documentElement.clientHeight,
+	  _PageWidth = document.documentElement.clientWidth;
+// 距上高度，距左宽度
+var _LoadingTop = _PageHeight > 61 ? (_PageHeight - 61) / 2 : 0,
+  _LoadingLeft = _PageWidth > 215 ? (_PageWidth - 215) / 2 : 0;
+// 加载框
+var _LoadingHtml = '<div id="loadingDiv" style="position:absolute;left:0;width:100%;height:' 
+	+ _PageHeight + 'px;top:0;background:#f3f8ff;opacity:0.8;filter:alpha(opacity=80);z-index:10000;">'
+	+ '<div style="position: absolute; cursor1: wait; left: ' 
+	+ _LoadingLeft + 'px; top:' + _LoadingTop 
+	+ 'px; width: auto; height: 57px; line-height: 57px; padding-left: 50px; padding-right: 5px; background: #fff url(static/lib/strategic/weekly/images/loading.gif) no-repeat scroll 5px 10px; border: 2px solid #95B8E7; color: #696969; font-family:\'Microsoft YaHei\';">正在导出，请等待...</div></div>';
+
+// 加载状态为complete时移除loading效果
+function completeLoading() {
+	var loadingMask = document.getElementById('loadingDiv');
+	loadingMask.parentNode.removeChild(loadingMask);
+}
+
+/**
+ * 导出报告
+ */
+$('.export').click(function(event){
+	$("#loading").append(_LoadingHtml);
+	setTimeout('exportWord()', 100);
+})
+
+/**
+ * 导出word
+ */
+function exportWord() {
+	
+	var catalog = $("#exportWord").empty();
+	//目录
+	catalog.append($(".menu-container").html());
+	
+	//删除没有勾选的三级菜单
+	catalog.find(".MenuLThree").each(function(){
+		if($(this).find("input")){
+			if (!$(this).find("input").get(0).checked){
+				$(this).remove();
+			} else {
+				$(this).find("span").each(function(){
+					$(this).wrap(document.createElement("h3"));
+				});
+			}
+		}
+	});
+	
+	//删除不需要的二级菜单
+	catalog.find(".MenuLTwo").each(function(){
+		if($(this).find(".MenuLThree").length == 0){
+			$(this).remove();
+		} else {
+			$(this).children("p").children("span").each(function(){
+				if($(this).html()){
+					$(this).wrap(document.createElement("h2"));
+				}
+			});
+		}
+	});
+	
+	
+	//删除不需要的一级菜单
+	catalog.find(".MenuLOne").each(function(){
+		if($(this).find(".MenuLTwo").length == 0){
+			$(this).remove();
+		} else {
+			$(this).children("p").children("span").each(function(){
+				if($(this).html()){
+					$(this).wrap(document.createElement("h1"));
+				}
+			});
+		}
+	});
+	
+	//删除选择框
+	catalog.find("input").each(function(){
+		$(this).remove();
+	});
+	
+	
+	//内容
+	//catalog.append("<h1>内容</h1>");
+	/*$(".imageContent").each(function(){
+		catalog.append($(this).html());
+	});
+	
+	//删除不需要导出的图
+	catalog.find(".DiagramTitleThree").each(function(){
+		if($(this).attr('aria-expanded') == 'false'){
+			$(this).next().remove();
+			$(this).remove();
+		} else {
+			$(this).find("span").each(function(){
+				if($(this).html()){
+					$(this).wrap(document.createElement("h3"));
+				}
+			});
+			
+		}
+	});
+	
+	//删除不需要二级标题
+	catalog.find(".DiagramTitleTwo").each(function(){
+		if($(this).find(".DiagramTitleThree").length == 0){
+			$(this).remove();
+		} else {
+			$(this).children("span").each(function(){
+				if($(this).html()){
+					$(this).wrap(document.createElement("h2"));
+				}
+			});
+		}
+	});
+	
+	//删除一级标题
+	catalog.find(".DiagramTitleOne").each(function(){
+		if($(this).find(".DiagramTitleTwo").length == 0){
+			$(this).remove();
+		} else {
+			$(this).children("span").each(function(){
+				if($(this).html()){
+					$(this).wrap(document.createElement("h1"));
+				}
+			});
+		}
+	});
+	
+	//删除图片和点评
+	catalog.find(".DiagramBigDiv").each(function(){
+		$(this).remove();
+	});
+	
+	//删除菜单前面的圈样式
+	catalog.find(".menu-circle").each(function(){
+		$(this).remove();
+	});
+	
+	//生成图片
+	catalog.find(".DiagramTitleThree").each(function(){
+		var diagramThreeId = $(this).attr("id");
+		if ("diagramThree1" == diagramThreeId) {
+			loadImg(diagramThreeId, '博弈/存量指标', -10, 35);	
+		} else if ("diagramThree2" == diagramThreeId) {
+			loadImg(diagramThreeId, '融资买入/可用担保价值', -10, 35);	
+		} else if ("diagramThree3" == diagramThreeId) {
+			loadImg(diagramThreeId, '综合性情绪指标', -10, 35);	
+		} else if ("diagramThree4" == diagramThreeId) {
+			loadImg(diagramThreeId, '指定板块的强势股占比', -10, 35);	
+		} else if ("diagramThree5" == diagramThreeId) {
+			loadImg(diagramThreeId, '分级基金成交显示的风险偏好', -40, 30);	
+		} else if ("diagramThree6" == diagramThreeId) {
+			loadImg(diagramThreeId, '指定板块的历史换手率', -10, 35);	
+		} else if ("diagramThree7" == diagramThreeId) {
+			var showDiagramLeftId = diagramThreeId.replace("diagramThree", "showDiagram");
+			var showDiagramRightId = diagramThreeId.replace("diagramThree", "showDiagram") + "Small";
+			loadImgs(diagramThreeId, showDiagramLeftId, showDiagramRightId, 
+					'指定板块的个股收盘价', '', 800, 500, 800, 300);
+			
+		} else if ("diagramThree8" == diagramThreeId) {
+			loadImg(diagramThreeId, '个股估值分布的重要时点比较', -10, 35);	
+		} else if ("diagramThree9" == diagramThreeId) {
+			loadImg(diagramThreeId, '指定板块相对换手率的历史变化', -10, 35);	
+		} else if ("diagramThree10" == diagramThreeId) { 
+			var showDiagramLeftId = diagramThreeId.replace("diagramThree", "showDiagramLeft");
+			var showDiagramRightId = diagramThreeId.replace("diagramThree", "showDiagramRight");
+			loadImgs(diagramThreeId, showDiagramLeftId, showDiagramRightId, 
+					'本周换手率变化最大的基准', '本周换手率变化最大的板块', 500, 450, 500, 450);
+		} else if ("diagramThree11" == diagramThreeId) { 
+			var showDiagramLeftId = diagramThreeId.replace("diagramThree", "showDiagramLeft");
+			var showDiagramRightId = diagramThreeId.replace("diagramThree", "showDiagramRight");
+			loadImgs(diagramThreeId, showDiagramLeftId, showDiagramRightId, 
+					'本周换手率绝对水平最高的基准', '本周换手率绝对水平最高的板块', 500, 450, 500, 450);
+		} else if ("diagramThree12" == diagramThreeId) {
+			loadTable(diagramThreeId);	
+		} else if ("diagramThree13" == diagramThreeId) {
+			loadImg(diagramThreeId, '指定板块周换手率的历史变化', -10, 35);	
+		} else if ("diagramThree14" == diagramThreeId) {
+			var showDiagramLeftId = diagramThreeId.replace("diagramThree", "showDiagramLeft");
+			var showDiagramRightId = diagramThreeId.replace("diagramThree", "showDiagramRight");
+			loadImgs(diagramThreeId, showDiagramLeftId, showDiagramRightId, 
+					'本周新增“速度/加速度”加强的行业', '本周新增“速度/加速度”衰竭的行业', 500, 450, 500, 450);
+		} else if ("diagramThree15" == diagramThreeId) {
+			loadImg(diagramThreeId, '所有行业“速度/加速度”的最新分布', -60, 0);	
+		} else if ("diagramThree16" == diagramThreeId) {
+			loadImg(diagramThreeId, '指定行业“速度/加速度”的历史变化路径', -10, 35);	
+		} else if ("diagramThree17" == diagramThreeId) {
+			loadImg(diagramThreeId, '中期_HP滤波后的行业估值', -10, 35);	
+		}
+	});
+	
+	var curTime=getCurrentTime(1);
+	// 延迟3秒执行生成word，为了等待图片完全加载
+	setTimeout(function(){$("#exportWord").wordExport("策略观察周度报告"+curTime); completeLoading()}, 3000);*/
+	
+	//生成图片
+	catalog.find(".MenuLThree").each(function(){
+		var diagramThreeId = $(this).find("span").attr("id");
+		if ("menuThreeSelected1" == diagramThreeId) {
+			loadImg(diagramThreeId, '博弈/存量指标', -10, 35);	
+		} else if ("menuThreeSelected2" == diagramThreeId) {
+			loadImg(diagramThreeId, '融资买入/可用担保价值', -10, 35);	
+		} else if ("menuThreeSelected3" == diagramThreeId) {
+			loadImg(diagramThreeId, '综合性情绪指标', -10, 35);	
+		} else if ("menuThreeSelected4" == diagramThreeId) {
+			loadImg(diagramThreeId, '指定板块的强势股占比', -10, 35);	
+		} else if ("menuThreeSelected5" == diagramThreeId) {
+			loadImg(diagramThreeId, '分级基金成交显示的风险偏好', -40, 30);	
+		} else if ("menuThreeSelected6" == diagramThreeId) {
+			loadImg(diagramThreeId, '指定板块的历史换手率', -10, 35);	
+		} else if ("menuThreeSelected7" == diagramThreeId) {
+			var showDiagramLeftId = diagramThreeId.replace("menuThreeSelected", "showDiagram");
+			var showDiagramRightId = diagramThreeId.replace("menuThreeSelected", "showDiagram") + "Small";
+			loadImgs(diagramThreeId, showDiagramLeftId, showDiagramRightId, 
+					'指定板块的个股收盘价', '', 800, 500, 800, 300);
+			
+		} else if ("menuThreeSelected8" == diagramThreeId) {
+			loadImg(diagramThreeId, '个股估值分布的重要时点比较', -10, 35);	
+		} else if ("menuThreeSelected9" == diagramThreeId) {
+			loadImg(diagramThreeId, '指定板块相对换手率的历史变化', -10, 35);	
+		} else if ("menuThreeSelected10" == diagramThreeId) { 
+			var showDiagramLeftId = diagramThreeId.replace("menuThreeSelected", "showDiagramLeft");
+			var showDiagramRightId = diagramThreeId.replace("menuThreeSelected", "showDiagramRight");
+			loadImgs(diagramThreeId, showDiagramLeftId, showDiagramRightId, 
+					'本周换手率变化最大的基准', '本周换手率变化最大的板块', 500, 450, 500, 450);
+		} else if ("menuThreeSelected11" == diagramThreeId) { 
+			var showDiagramLeftId = diagramThreeId.replace("menuThreeSelected", "showDiagramLeft");
+			var showDiagramRightId = diagramThreeId.replace("menuThreeSelected", "showDiagramRight");
+			loadImgs(diagramThreeId, showDiagramLeftId, showDiagramRightId, 
+					'本周换手率绝对水平最高的基准', '本周换手率绝对水平最高的板块', 500, 450, 500, 450);
+		} else if ("menuThreeSelected12" == diagramThreeId) {
+			loadTable(diagramThreeId);	
+		} else if ("menuThreeSelected13" == diagramThreeId) {
+			loadImg(diagramThreeId, '指定板块周换手率的历史变化', -10, 35);	
+		} else if ("menuThreeSelected14" == diagramThreeId) {
+			var showDiagramLeftId = diagramThreeId.replace("menuThreeSelected", "showDiagramLeft");
+			var showDiagramRightId = diagramThreeId.replace("menuThreeSelected", "showDiagramRight");
+			loadImgs(diagramThreeId, showDiagramLeftId, showDiagramRightId, 
+					'本周新增“速度/加速度”加强的行业', '本周新增“速度/加速度”衰竭的行业', 500, 450, 500, 450);
+		} else if ("menuThreeSelected15" == diagramThreeId) {
+			loadImg(diagramThreeId, '所有行业“速度/加速度”的最新分布', -60, 0);	
+		} else if ("menuThreeSelected16" == diagramThreeId) {
+			loadImg(diagramThreeId, '指定行业“速度/加速度”的历史变化路径', -10, 35);	
+		} else if ("menuThreeSelected17" == diagramThreeId) {
+			loadImg(diagramThreeId, '中期_HP滤波后的行业估值', -10, 35);	
+		}
+	});
+	
+	var curTime=getCurrentTime(1);
+	// 延迟3秒执行生成word，为了等待图片完全加载
+	setTimeout(function(){$("#exportWord").wordExport("策略观察周度报告"+curTime); completeLoading()}, 3000);
+}
+
+/**
+ * 加载一个图片
+ */ 
+function loadImg(diagramThreeId, title, x, y) {
+	var showDiagramId = diagramThreeId.replace("menuThreeSelected", "showDiagram");
+	var chart = $('#'+showDiagramId).highcharts();
+	if (chart) {
+		chart.title.update({ text: title});
+		chart.legend.update({
+		    enabled: true,
+		    align: 'right',
+		    verticalAlign: 'top',
+		    x: x,
+			y: y,
+			floating: false,
+			itemStyle:{
+				"color": "black", 
+				"cursor": "pointer", 
+				"fontSize": "12px", 
+			},
+		    margin:0
+		});
+		
+		var svg = chart.getSVG().replace(/\&quot;/g,"");//.replace(/</g, '\n<').replace(/>/g, '>');
+		$.ajax({
+			method: "POST",
+			url: 'weekly/svgToImg',
+			data: {'svgCode':svg, 'name':showDiagramId}
+		})
+		.done(function( data ) {
+			if ("failed" == data) {
+				//alert("没有点评权限，请联系管理员。");
+			} else {
+				var img = document.createElement("img"); 
+				img.src = data;
+				$("#exportWord").find("#"+diagramThreeId).parent().after(img);
+			}
+		})
+		.fail(function( jqXHR, textStatus ) {
+			console.log( "Request failed: " + textStatus );
+		});
+		
+//		var img = document.createElement("img"); 
+//		img.src = 'data:image/svg+xml;base64,' + window.btoa(unescape(encodeURIComponent(svg)));
+//		$("#exportWord").find("#"+diagramThreeId).after(img);
+	}
+}
+
+/**
+ * 加载两个图片
+ */
+function loadImgs(diagramThreeId, showDiagramLeftId, showDiagramRightId, titleLeft, titleRight, widthLeft, heightLeft, widthRight, heightRight){
+	var chartLeft = $('#'+showDiagramLeftId).highcharts();
+	var chartRight = $('#'+showDiagramRightId).highcharts();
+	
+	if (chartRight) {
+		if (titleRight) {
+			chartRight.title.update({ text: titleRight});
+		}
+		chartRight.exporting.update({ enabled: false,scale: 1,sourceWidth: widthRight,sourceHeight: heightRight});			
+//		var svgRight = chartRight.getSVG().replace(/</g, '\n<').replace(/>/g, '>'); 
+//		var imgRight = document.createElement("img"); 
+//		imgRight.src = 'data:image/svg+xml;base64,' + window.btoa(unescape(encodeURIComponent(svgRight)));
+//		$("#exportWord").find("#"+diagramThreeId).after(imgRight);
+		
+		var svgRight = chartRight.getSVG().replace(/\&quot;/g,"");//.replace(/</g, '\n<').replace(/>/g, '>');
+		$.ajax({
+			method: "POST",
+			url: 'weekly/svgToImg',
+			data: {'svgCode':svgRight, 'name':showDiagramRightId}
+		})
+		.done(function( data ) {
+			if ("failed" == data) {
+				//alert("没有点评权限，请联系管理员。");
+			} else {
+				var imgRight = document.createElement("img"); 
+				imgRight.src = data;
+				$("#exportWord").find("#"+diagramThreeId).after(imgRight);
+			}
+		})
+		.fail(function( jqXHR, textStatus ) {
+			console.log( "Request failed: " + textStatus );
+		});
+	}
+	
+	if (chartLeft) {
+		if (titleLeft) {
+			chartLeft.title.update({ text: titleLeft});
+		}
+		chartLeft.exporting.update({ enabled: false,scale: 1,sourceWidth: widthLeft,sourceHeight: heightLeft});			
+//		var svgLeft = chartLeft.getSVG().replace(/</g, '\n<').replace(/>/g, '>'); 
+//		var imgLeft = document.createElement("img"); 
+//		imgLeft.src = 'data:image/svg+xml;base64,' + window.btoa(unescape(encodeURIComponent(svgLeft)));
+//		$("#exportWord").find("#"+diagramThreeId).after(imgLeft);
+		var svgLeft = chartLeft.getSVG().replace(/\&quot;/g,"");//.replace(/</g, '\n<').replace(/>/g, '>');
+		$.ajax({
+			method: "POST",
+			url: 'weekly/svgToImg',
+			data: {'svgCode':svgLeft, 'name':showDiagramLeftId}
+		})
+		.done(function( data ) {
+			if ("failed" == data) {
+				//alert("没有点评权限，请联系管理员。");
+			} else {
+				var imgLeft = document.createElement("img"); 
+				imgLeft.src = data;
+				$("#exportWord").find("#"+diagramThreeId).after(imgLeft);
+			}
+		})
+		.fail(function( jqXHR, textStatus ) {
+			console.log( "Request failed: " + textStatus );
+		});
+	}
+}
+
+/**
+ * 加载表格
+ * @param diagramThreeId
+ */
+function loadTable(diagramThreeId) {
+	var showDiagramId = diagramThreeId.replace("menuThreeSelected", "showDiagram") + "Hide";
+	$("#exportWord").find("#"+diagramThreeId).parent().after($("#"+showDiagramId).html());
+}
+
+/**
+ * 图B2.3 点击导出Excel
+ */
+$('#diagramDiv12').find('.spanExportButton').click(function(event){
+	var title = "";
+	$('#diagramDiv12 .selectDataArea').find('button').each(function(){
+		if ("rgb(215, 215, 215)" == this.style.backgroundColor || "#d7d7d7" == this.style.backgroundColor){
+			title = $(this).html() + "的周换手率";
+		}
+	});
+	
+	var curTime=getCurrentTime(1);
+//	$("#showDiagram12").wordExport(title + curTime)
+	$("#showDiagram12Hide").table2excel({
+        // 不被导出的表格行的CSS class类
+        exclude: ".noExl",
+        // 导出的Excel文档的名称
+//        name: "Excel Document Name",
+        // Excel文件的名称
+        filename: title + curTime + ".xls",
+        //文件后缀名
+        fileext: ".xls",
+        //是否排除导出图片
+        exclude_img: false,
+        //是否排除导出超链接
+        exclude_links: false,
+        //是否排除导出输入框中的内容
+        exclude_inputs: false
+    });
+});

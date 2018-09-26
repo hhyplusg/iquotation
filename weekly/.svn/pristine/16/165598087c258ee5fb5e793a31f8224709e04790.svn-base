@@ -1,0 +1,1098 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+// #349BE0
+body {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  margin: 0 auto;
+  display: block;
+  background: white none repeat scroll 0 0;
+}
+
+div {
+  text-align: left;
+  line-height: 140%;
+}
+
+img {
+  border: medium none;
+  max-width: 100%;
+}
+
+a {
+  color: #27757b;
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  color: #333333;
+}
+
+a.highlight {
+  color: #9E2F50;
+}
+
+ul, li {
+  list-style-position: outside;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.clearfloat {
+  clear: both;
+}
+
+button {
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  vertical-align: middle;
+  margin: 0;
+  outline: 0;
+  border-style: solid;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 3px;
+  cursor: pointer;
+  background-clip: padding-box;
+  background-size: 16px;
+  min-height: 26px;
+  min-width: 26px;
+  padding: 0 8px;
+  font-size: 13px;
+  line-height: 26px;
+  border-width: 1px;
+  color: black;
+  background-color: rgba(255, 255, 255, .4);
+  border-color: rgba(39, 117, 123, .15);
+}
+
+.returnToTop {
+  position: fixed;
+  z-index: 100000;
+  bottom: 10%;
+  right: 10%;
+  border: 1px solid #d7d7d7;
+  font-size: 10px;
+}
+
+.returnToTop div {
+  text-align: center;
+}
+
+.returnToTop img {
+  width: 40px;
+}
+
+.title-container {
+  width: 100%;
+  margin: 0px auto 10px;
+  background-color: #349BE0;
+  text-align: left;
+  line-height: 50px;
+  margin-bottom: 0px;
+  color: white;
+}
+
+.title-container .title {
+  text-align: left;
+  margin-left: 1.5%;
+  // font-weight: bold;
+}
+
+.title-container .export {
+  position: absolute;
+  right: 5%;
+  width: 70px;
+  font-size: 13px;
+  font-family: '微软雅黑 Regular', '微软雅黑';
+  text-align: center;
+  line-height: 25px;
+  margin-top: 12px;
+  border: 1px solid #CCCCCC;
+  background-color: white;
+}
+
+.SystemDIV {
+  width: 93%;
+  margin: 0px auto 10px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #F2F2F2;
+}
+
+.TitleDIV {
+  width: 97%;
+  margin-left: auto;
+  margin-right: auto;
+  /*text-align:center;*/
+  vertical-align: middle;
+}
+.menu{
+  background-color: #349BE0;
+  font-size: 13px;
+  color:white;
+}
+.menu p{
+  line-height: 50px;
+}
+// input:checked{-webkit-appearance:none;background-color: red;}
+
+.menu-circle {
+  display: inline-block;
+  border: 1px solid #d7d7d7;
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  background: white;
+}
+
+.menu-container {
+  background-color: white;
+}
+
+.menu-container .menu span {
+  font-size: 15px;
+  margin-left: 20px;
+  line-height: 50px;
+}
+
+.MenuLOne {
+  margin-left: 20px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  /*font-family: '微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';*/
+  // font-weight: 600;
+  font-style: normal;
+  font-size: 13px;
+  padding: 5px 0px;
+  
+}
+.MenuLOne .menuOneTitle{
+  color: #349BE0;
+  font-weight: 600;
+}
+.MenuLOne .menuTwoTitle{
+  color: #C69C6D;
+  
+}
+
+.MenuLOne > p .menu-circle {
+  background-color: #d7d7d7;
+}
+
+.MenuLTwo {
+  margin-left: 20px;
+  margin-bottom: 5px;
+  /*font-family: '微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';*/
+  font-weight: 500;
+  font-style: normal;
+  font-size: 13px;
+}
+
+.MenuLTwo p {
+  margin: 5px 0px;
+}
+
+.MenuLThree {
+  margin-left: 30px;
+  margin-bottom: 5px;
+  font-family: '微软雅黑';
+  font-weight: 100;
+  font-style: normal;
+  font-size: 10px;
+  color: #5A7FB5;
+}
+
+.MenuLThree span {
+  cursor: pointer;
+}
+
+.MenuLThree span:hover {
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+}
+
+.MenuLThree input, span {
+  vertical-align: middle;
+}
+
+.img {
+  vertical-align: middle;
+}
+
+.DiagramTitleOne {
+  background-color: #349BE0;
+  text-align: left;
+  line-height: 50px;
+  font-size: 15px;
+  border: 1px solid #d7d7d7;
+}
+
+.DiagramTitleOne .left-img-one {
+  display: inline-block;
+  width: 3px;
+  height: 30px;
+  background-color: white;
+  margin-left: 20px;
+}
+
+.DiagramTitleOne  .span-title-one{
+  color: white;
+}
+
+.DiagramTitleTwo {
+  background-color: white;
+  text-align: left;
+  line-height: 50px;
+  font-size: 15px;
+  border-top: 1px solid #d7d7d7;
+  border-left: none;
+  border-right: none;
+  // position:relative;
+}
+.diagram-title-two-section{
+  background-color: #D8D8D8;
+  // background-color: white; 
+  position: relative;
+  line-height: 40px;
+}
+.right-img-two{
+  display: inline-block;
+  width: 0px;
+  height: 0px;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  // border-top: 10px solid #a99c9c;
+  border-top: 10px solid #e7e7e7;
+  position: absolute;
+  right: 30px;
+  top: 40%;
+}
+
+.DiagramTitleTwo .left-img-two {
+  display: inline-block;
+  width: 3px;
+  height: 30px;
+  background-color: #e7e7e7;
+  margin-left: 40px;
+
+  // display: inline-block;
+  // border: 10px;
+  // border-radius: 50%;
+  // width: 10px;
+  // height: 10px;
+  // background: #d8d8d8;
+  // margin-left: 40px;
+}
+
+.DiagramTitleTwo span {
+  text-align: left;
+}
+
+.DiagramTitleTwo img {
+  margin-left: 20px;
+}
+
+.DiagramTitleThree {
+  background-color: white;
+  text-align: left;
+  line-height: 40px;
+  font-size: 15px;
+  border-top: 1px solid #d7d7d7;
+  border-left: none;
+  border-right: none;
+}
+
+.DiagramTitleOne_arrow {
+  background-color: #349BE0;
+  width: 25px;
+  height: 25px;
+  margin-top: 12px;
+  margin-right: 25px;
+  vertical-align: middle;
+  float: right;
+  text-align: center;
+  line-height: 25px;
+}
+
+.DiagramTitleOne_arrow .right-img-one {
+  display: inline-block;
+  width: 0px;
+  height: 0px;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 10px solid white;
+}
+
+.DiagramTitleThree_arrow {
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+  margin-right: 20px;
+  vertical-align: middle;
+  float: right;
+  text-align: center;
+  line-height: 25px;
+}
+
+@keyframes arrowRotateDown {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+}
+
+@-webkit-keyframes arrowRotateDown {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+}
+
+@keyframes arrowRotateUp {
+  from {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
+@-webkit-keyframes arrowRotateUp {
+  0% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
+.DiagramTitleThree_img {
+  // background-color: #f8f8f8;
+  background-color: #E8E8e8;
+  text-align: left;
+  line-height: 40px;
+  // margin: 10px;
+  position: relative;
+}
+
+.DiagramTitleThree_img .left-img-three {
+  display: inline-block;
+  border: 10px;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  background: #d7d7d7;
+  margin-left: 40px;
+}
+
+.DiagramTitleThree_img .right-img-three {
+  display: inline-block;
+  width: 0px;
+  height: 0px;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 10px solid #d7d7d7;
+  position: absolute;
+  right: 30px;
+  top: 40%;
+}
+
+.DiagramBigDiv {
+  /*width: 100%;*/
+  height: 550px;
+  // background-color: #F2F2F2;
+  background-color: white;
+  overflow: hidden;
+  max-height: 0;
+  position: relative;
+  z-index: 9;
+}
+
+.DiagramBigDiv .spanExportButton {
+  position: absolute;
+  display: inline-block;
+  top: 58px;
+  left: 56%;
+  z-index: 10;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+}
+
+.DiagramBigDiv .selectDataArea {
+  position: absolute;
+  z-index: 1;
+  left: 40px;
+  top: 10px;
+  height: 40px;
+  line-height:40px;
+}
+.right-comment{
+    background-color: white;
+    padding: 0px 10px;
+}
+.DiagramBigDiv .selectDataArea span {
+  margin: 0px 10px;
+}
+
+.DiagramBigDiv .selectDataArea select {
+  height: 25px;
+  width: 100px;
+}
+
+.DiagramBigDiv #showDiagram4, .DiagramBigDiv #showDiagram5, .DiagramBigDiv #showDiagram6, .DiagramBigDiv #showDiagram7, .DiagramBigDiv #showDiagram8, .DiagramBigDiv #showDiagram9, .DiagramBigDiv #showDiagram12, .DiagramBigDiv #showDiagram13, .DiagramBigDiv #showDiagram16, .DiagramBigDiv #showDiagram17 {
+  margin-top: 40px;
+}
+
+#diagramDiv2 .spanExportButton {
+  top: 58px;
+  left: 55%;
+}
+
+#diagramDiv3 .spanExportButton {
+  top: 58px;
+  left: 55%;
+}
+
+#diagramDiv4 .spanExportButton {
+  top: 98px;
+  left: 55%;
+}
+
+#diagramDiv5 .spanExportButton {
+  top: 98px;
+  left: 55%;
+}
+
+#diagramDiv6 .spanExportButton {
+  top: 98px;
+  left: 56%;
+}
+
+#diagramDiv7 {
+  height: 750px;
+}
+
+#diagramDiv7 .spanExportButton {
+  top: 98px;
+  left: 56%;
+}
+
+#diagramDiv7 #leftButton7 {
+  top: 98px;
+  left: 56%;
+}
+#diagramDiv7 #rightButton7 {
+  top: 500px;
+  left: 56%;
+}
+
+#diagramDiv7 #showDiagram7Small {
+  height: 250px;
+  width: 760px;
+}
+
+#diagramDiv7 #showDiagram7 {
+  height: 450px;
+}
+
+#diagramDiv8 .spanExportButton {
+  top: 78px;
+  left: 55%;
+}
+
+#diagramDiv9 .spanExportButton {
+  top: 98px;
+  left: 55%;
+}
+
+#diagramDiv10 #leftButton {
+  top: 30px;
+  left: 26%;
+}
+#diagramDiv10 #rightButton {
+  top: 30px;
+  left: 56%;
+}
+
+#diagramDiv11 #leftButton11 {
+  top: 30px;
+  left: 26%;
+}
+#diagramDiv11 #rightButton11 {
+  top: 30px;
+  left: 56%;
+}
+
+#diagramDiv12 .spanExportButton {
+  top: 12px;
+  left: 56%;
+}
+
+#diagramDiv13 .spanExportButton {
+  top: 99px;
+  left: 56%;
+}
+
+#diagramDiv14 #leftButton14 {
+  top: 30px;
+  left: 26%;
+}
+
+#diagramDiv14 #rightButton14 {
+  top: 30px;
+  left: 56%;
+}
+
+#diagramDiv15 .spanExportButton {
+  top: 38px;
+  left: 56%;
+}
+
+#diagramDiv16 .spanExportButton {
+  top: 75px;
+  left: 56%;
+}
+
+#diagramDiv17 .spanExportButton {
+  top: 99px;
+  left: 56%;
+}
+
+.DiagramAreaDiv1 {
+  width: 60%;
+  height: 500px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  /*background-color:green;                  */
+  float: left;
+  padding: 10px;
+}
+
+.showDiagramLeft {
+  float: left;
+  width: 50%;
+  // height: 450px;
+  height: 100%;
+}
+
+.showDiagramRight {
+  float: right;
+  width: 50%;
+  height: 100%;
+  // height: 450px;
+}
+
+.diagramTable {
+  // margin: 0px 0px 0px 30px;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.diagramTable tr{
+  height: 25px;
+}
+
+.diagramTable tr td {
+  border-bottom: 1px solid #CCCCCC;
+  border-top: 1px solid #CCCCCC;
+  color: black;
+  font-size: 14px;
+  text-align: center;
+}
+
+.DiagramAreaDiv2 {
+  width: 40%;
+  // height: 500px;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  /*background-color:blue;                */
+  float: left;
+  // padding: 10px 0px;
+  padding: 10px 0px 10px 5px;
+  
+  border-left: 5px solid #F2F2F2;
+}
+
+.DiagramAreaDiv2 .table-title {
+  font-size: 13px;
+  padding: 0px 10px 0px 0px ;
+  // line-height: 20px;
+  // letter-spacing: 2px;
+}
+.DiagramAreaDiv2 .table-title span {
+  font-weight: 600;
+}
+.table-input-section{
+  height: 40px;
+}
+.table-input {
+  // display: -webkit-box;
+  // display: -ms-flexbox;
+  // display: flex;
+  // -webkit-box-pack: justify;
+  //     -ms-flex-pack: justify;
+  //         justify-content: space-between;
+  // -webkit-box-align: center;
+  //     -ms-flex-align: center;
+  //         align-items: center;
+  padding: 5px 0px 0px 0px;
+  font-family: 'Arial Normal', 'Arial';
+  font-weight: 400;
+  font-style: normal;
+  font-size: 13px;
+}
+
+.all-table-input label,.table-input label {
+  vertical-align: middle;
+  margin-right: 2px;
+}
+
+.input-date {
+  border: 1px solid #d7d7d7;
+  height: 30px;
+  vertical-align: middle;
+  width: 100px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.input-btn {
+  height: 30px;
+  padding: 0px 15px;
+  vertical-align: middle;
+  font-size: 13px;
+}
+.comment-inquery{
+  background-color:#349BE0 ;
+  border: 1px solid #349BE0;
+  color: white;
+}
+.create-comment-btn{
+  background-color:#e29317 ;
+  border: 1px solid #e29317;
+  color: white;
+}
+.table-container {
+  margin-bottom: 10px;
+  // margin-top: 10px;
+  text-align: center;
+  font-family: 'Arial Normal', 'Arial';
+  font-weight: 400;
+  font-style: normal;
+  font-size: 13px;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+#diagramDiv1 .table-container {
+  height: 71%;
+}
+
+#diagramDiv2 .table-container {
+  height: 71%;
+}
+
+#diagramDiv3 .table-container {
+  height: 49%;
+}
+
+#diagramDiv6 .table-container {
+  height: 78%;
+}
+
+#diagramDiv7 .table-container {
+  height: 71%;
+}
+
+#diagramDiv9 .table-container {
+  height: 77%;
+}
+
+#diagramDiv14 .table-container {
+  height: 51%;
+}
+
+#diagramDiv17 .table-container {
+  height: 74%;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: scroll;
+  table-layout: fixed;
+}
+
+.table-container table tr {
+  border: 1px solid #349BE0;
+  text-align: center;
+  height: 25px;
+  background-color: #349BE0;
+}
+
+.table-container tr th {
+  background-color: #349BE0;
+  color: white;
+}
+
+.table-container table tr td, .table-container tr th {
+  border: 1px solid #d7d7d7;
+  text-align: center;
+}
+
+.table-container table tr td:first-child, .table-container table tr th:first-child {
+  width: 100px;
+}
+
+.table-container table tr td:nth-child(2), .table-container table tr th:nth-child(2) {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.table-container table tr td:nth-child(3), .table-container table tr th:nth-child(3) {
+  width: 100px;
+}
+
+.table-container td:nth-child(2):hover {
+  white-space: inherit;
+  text-overflow: inherit;
+  overflow: inherit;
+}
+
+.edit-label {
+  text-align: left;
+  margin-bottom: 10px;
+  font-family: 'Arial Normal', 'Arial';
+  font-weight: 400;
+  font-style: normal;
+}
+
+.edit-textarea {
+  text-align: left;
+}
+
+.edit-textarea textarea {
+  width: 500px;
+  height: 200px;
+  color: #999999;
+}
+
+.edit-btn {
+  text-align: left;
+}
+
+.horizon-line {
+  height: 0px;
+  border: 1px solid #f2f2f2;
+  margin: 5px 0px 5px -20px;
+}
+
+.create-comment-container {
+  display: none;
+  z-index: 1000;
+}
+
+.create-comment-container div {
+  z-index: 1000;
+}
+
+.create-comment-container .comment-box .title {
+  border-bottom: 1px solid #d7d7d7;
+  padding: 10px;
+  height: 15%;
+}
+
+.create-comment-container .comment-box h3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.create-comment-container .comment-box .input {
+  padding: 10px 30px;
+  height: 70%;
+}
+
+.create-comment-container .comment-box .input textarea {
+  border-radius: 10px;
+  width: 100%;
+  height: 80%;
+  border: 1px solid #d7d7d7;
+}
+
+.create-comment-container .comment-box .button {
+  text-align: right;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  padding: 10px 30px 10px 10px;
+  width: 100%;
+  border-top: 1px solid #d7d7d7;
+  height: 15%;
+}
+
+.create-comment-container .comment-box .button button {
+  padding: 0px 10px;
+}
+
+.comment-overlay-shadow {
+  position: fixed;
+  opacity: 1;
+  -webkit-transition: opacity .3s ease-in-out;
+  transition: opacity .3s ease-in-out;
+  background: rgba(0, 0, 0, .7);
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.comment-box {
+  position: fixed;
+  font-size: 15px;
+  opacity: 1;
+  height: 50%;
+  bottom: 25%;
+  width: 50%;
+  left: 25%;
+  background: white;
+  overflow: visible;
+}
+
+.highcharts-range-selector, .hasDatepicker {
+  color: black;
+}
+
+.ui-datepicker {
+  background-color: #e0d1d5;
+  z-index: 100 !important;
+}
+
+.ui-datepicker .ui-datepicker-header {
+  padding: 0px 5px;
+}
+
+.ui-datepicker .ui-datepicker-header a {
+  color: blue;
+}
+
+.ui-datepicker .ui-datepicker-header .ui-datepicker-prev {
+  float: left;
+}
+
+.ui-datepicker .ui-datepicker-header .ui-datepicker-next {
+  float: right;
+}
+
+.ui-datepicker .ui-datepicker-header .ui-datepicker-title {
+  text-align: center;
+}
+
+.ui-datepicker-calendar {
+  z-index: 100;
+}
+
+.ui-datepicker-calendar a {
+  color: blue;
+}
+
+.ui-datepicker-calendar th, .ui-datepicker-calendar td {
+  padding: 2px;
+}
+
+.indicator-title label {
+  display: inline-block;
+  width: 0px;
+  height: 0px;
+  border-top: 10px solid #d7d7d7;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+}
+
+.indicator-title:hover + .indicator-content {
+  display: block;
+}
+
+.indicator-content {
+  display: none;
+  position: absolute;
+  background-color: #e0d1d5;
+  padding: 10px;
+  letter-spacing: 2px;
+}
+
+.table-head-container {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  margin-left: 30px;
+}
+.table-head-container table{
+  width:100%;
+}
+#showDiagram12 .table_title{
+  margin-left: 30px;
+}
+.table_title {
+  height: 420px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.table-head-title {
+  // margin: 0px 0px 0px 30px;
+  // padding: 0px 0px 0px 30px;
+  border-collapse: collapse;
+}
+
+.table-head-title th {
+  text-align: center;
+  padding: 2px;
+  color: white;
+}
+
+.diagramTable   tr td, .table-head-container table tr th {
+  border: 1px solid #d7d7d7;
+} 
+
+.table-head-title th:nth-child(1) {
+  width: 180px;
+  text-align: left;
+}
+
+.table-head-title th:nth-child(2), .table-head-title th:nth-child(3) {
+  width: 13%;
+}
+
+.table-head-title th:nth-child(4), .table-head-title th:nth-child(5), .table-head-title th:nth-child(6), .table-head-title th:nth-child(7) {
+  width: 13%;
+}
+
+.table-head-title tr {
+  background: #349BE0;
+}
+
+#showTable td {
+  text-align: center;
+}
+
+#showTable td:nth-child(1) {
+  width: 180px;
+  text-align: left;
+  padding-left: 4px;
+}
+
+#showTable td:nth-child(2), #showTable td:nth-child(3) {
+  width: 13%;
+  padding-right: 4px;
+}
+
+#showTable td:nth-child(4), #showTable td:nth-child(5), #showTable td:nth-child(6), #showTable td:nth-child(7) {
+  width: 13%;
+  padding-right: 4px;
+}
+
+#showTable tr:nth-child(even) {
+  background: #EAEAEA;
+}
+
+#showTable tr:nth-child(odd) {
+  background: White;
+}
+
+#showTable tr:hover {
+  background: #dafdf3;;
+}
+
+/*# sourceMappingURL=observe.css.map */
+.arrow {
+  display: inline-block;
+  vertical-align: middle;
+  width: 0;
+  height: 0;
+  margin-left: 1px;
+  opacity: 0.66;
+}
+
+.arrow.asc {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 10px solid #0078BA;
+}
+
+.arrow.desc {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 10px solid #0078BA;
+}
+
+#showTableHide{
+  display:none;
+}
+
+.all-table-input{
+	padding-top: 6px;
+	padding-bottom: 5px;
+  font-size: 13px;
+}
+
+.all-comment-container{
+    // margin-left: 20px;
+    background-color: white;
+}
+.all-input-section{
+    // margin-left: 20px;
+    margin-bottom: 5px;
+    background-color: white;
+}
+
+.all-comment-container .comment-title span:first-child {
+    margin-right: 2px;
+}
+.all-comment-section{
+  background-color: white;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+}
+.all-comment-container .comment-section{
+
+}
+.comment-title span{
+  background-color: #499CE2;
+  padding-left: 8px;
+  padding-right: 8px;
+  display: inline-block;
+  width: 92px;
+  color: white;
+}
+.comment-content{
+    padding: 10px 0px;
+    word-spacing: 10px;
+}
+
+

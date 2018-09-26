@@ -1,0 +1,1392 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>     
+   
+        <script type="text/javascript" src="static/lib/strategic/weekly/jquery-1.12.0.min.js"></script> 
+
+        <script src="static/lib/strategic/weekly/Highstock-6.1.0/code/highstock.js"></script>
+        <script src="static/lib/strategic/weekly/Highstock-6.1.0/code/modules/exporting.js"></script>
+        <script src="static/lib/strategic/weekly/Highstock-6.1.0/code/modules/offline-exporting.js"></script>        
+        <script src="static/lib/strategic/weekly/es6-promise.js"></script>
+        <script src="static/lib/strategic/weekly/es6-promise.auto.js"></script>
+        <script src="static/lib/strategic/weekly/html2canvas.js"></script>
+        
+        <script src="static/lib/strategic/weekly/Highstock-6.1.0/code/highcharts-zh_CN.js"></script>
+        <script type="text/javascript" src="static/lib/strategic/weekly/Highstock-6.1.0/code/lib/highcharts-axis-arrow.js"></script>
+
+        
+        <script type="text/javascript" src="static/lib/strategic/weekly/echarts.min.js"></script>
+        <script type="text/javascript" src="static/lib/strategic/weekly/ecStat.min.js"></script>
+        
+        <script type="text/javascript" src="static/lib/strategic/weekly/FileSaver.js"></script>
+        <script type="text/javascript" src="static/lib/strategic/weekly/jquerywordexport/jquerywordexport.js"></script>
+
+        <script type="text/javascript" src="static/lib/strategic/weekly/jquery/jquery-ui.min.js"></script>
+
+        <script type="text/javascript" src="static/lib/strategic/weekly/Highstock-6.1.0/code/lib/rgbcolor.js"></script>
+        <script type="text/javascript" src="static/lib/strategic/weekly/canvg.js"></script>
+
+        <link  href="static/lib/strategic/weekly/styles/observe.css" type="text/css" rel="stylesheet"/>
+        
+    </head>
+    <body id="bigDiv">
+    <!-- 系统表头 -->
+    <!-- <div class="SystemDIV" id="exportWord1">
+        <img  class="img " src="static/lib/strategic/weekly/images/navigation.jpg" style="width: 100%;"/>
+    </div> -->
+    <!-- 周报告大背景div -->
+    <div class="SystemDIV">            
+        <!-- 周报告正文div -->
+        <div class="TitleDIV">
+            <!-- 周报告名称与导出报告 -->
+            <div class="title-container"> 
+                <span class="title">市场量化指标周度报告</span>
+                <a href="javascript:;"><span class="export">导出报告</span></a>
+            </div> <!-- 周报告名称与导出报告 -->
+            
+			<div  class="horizon-line"></div>
+            <div class="title-container" key="0000"> 
+                <div class="create-comment-container">
+                    <div class="comment-overlay-shadow" id="comment-overlay-shadow">
+                    </div>
+
+                    <div class="comment-box">  
+                        <div class="title">
+                            <h3><span>新建周度报告点评</span><span class="close-comment">x</span></h3> 
+                        </div>
+                        <div class="input">
+                            <h5>点评备注：</h5>
+                            <textarea placeholder="点评输入备注内容..." class="comment-word"></textarea>
+                        </div>
+                        <div class="button">
+                            <button  class="comment-page-btn cancel comment-cancel">取消</button>
+                            <button  class="comment-page-btn confirm comment-confirm">确定</button>
+                        </div>
+                    </div>
+                </div> 
+                <div class=" all-input-section">
+                    <div class="all-table-input">
+                        <span><label>开始：</label><input  name="11"  class="input-date start-date" /></span>
+                        <span><label>结束：</label><input  name="22"  class="input-date end-date"/></span>
+                        <input type="button" name="查询" value="查询" class="input-btn comment-inquery"/>
+                        <input type="button" name="" value="点评" class="input-btn create-comment-btn"/>  
+                    </div>
+                </div>  
+
+                <div class="all-comment-container">
+                  <!-- 
+                    <div class="comment-title"><span>张三</span><span>20180815</span></div>
+                    <div class="comment-content">123456张三张三</div> -->
+                </div>  
+               
+            </div> <!-- 点评 -->
+
+            <!-- 目录div -->
+            <div  class="menu-container">
+
+                <div  class="menu">      
+                    <p><span>目录：</span></p>
+                </div>
+
+                
+                <div class="MenuLOne">                   
+                    <p>
+                    <span class="menu-circle"></span>
+                    <input  class="menuOneCheck" type="checkbox" value="checkbox"/>
+                    <span>A.大势判断</span>
+                    </p>
+                    <div class="MenuLTwo ">
+                        <p>
+                        <span class="menu-circle"></span>
+                        <input class="menuTwoCheck" type="checkbox" value="checkbox" checked="checked"/>
+                        <span>A.1.短期_资金类指标</span>
+                        </p>
+                        <div class="MenuLThree ">
+                            <input id="menuThreeCheck1" type="checkbox" value="checkbox1"/>
+                            <span  id="menuThreeSelected1">A.1.1.博弈/存量指标</span>
+                        </div>
+                        <div class="MenuLThree" >
+                            <input id="menuThreeCheck2" type="checkbox" value="checkbox1"/>
+                            <span id="menuThreeSelected2">A.1.2.融资买入/可用担保价值</span>
+                        </div>
+                    </div> <!-- class="MenuLTwo " -->
+                     <!-- Unnamed (水平线) -->
+                    <div  class="horizon-line"></div>
+                    <div  class="MenuLTwo">
+                        <p>
+                        <span class="menu-circle"></span>
+                        
+                        <input class="menuTwoCheck" type="checkbox" value="checkbox"/>
+                        <span>A.2.短期_情绪类指标</span>
+                        </p>
+                        <div  class="MenuLThree " >
+                            <input id="menuThreeCheck3" type="checkbox" value="checkbox"/>
+                            <span id="menuThreeSelected3">A.2.1.综合性情绪指标</span>
+                        </div>
+                        <div  class="MenuLThree " >
+                            <input id="menuThreeCheck4" type="checkbox" value="checkbox"/>
+                            <span id="menuThreeSelected4">A.2.2.指定板块的强势股占比</span>
+                            
+                        </div>
+                        <div  class="MenuLThree " >   
+                            <input id="menuThreeCheck5" type="checkbox" value="checkbox"/>
+                            <span id="menuThreeSelected5">A.2.3.分级基金成交显示的风险偏好</span>                
+                        </div>
+                        <div  class="MenuLThree " >      
+                            <input id="menuThreeCheck6" type="checkbox" value="checkbox"/>
+                            <span id="menuThreeSelected6">A.2.4.指定板块的历史换手率</span>      
+                        </div>
+                    </div><!-- class="MenuLTwo " -->
+                    <div  class="horizon-line"></div>
+                    <div  class="MenuLTwo ">
+                        <p>
+                        <span class="menu-circle"></span>
+                        <input class="menuTwoCheck" type="checkbox" value="checkbox"/>
+                        <span>A.3.长期_个股的估值分布</span>
+                        </p>
+                        <div  class="MenuLThree ">
+                        
+                            <input id="menuThreeCheck7" type="checkbox" value="checkbox"/>
+                            <span  id="menuThreeSelected7">A.3.1.指定板块的个股估值分布</span>
+                            
+                        </div>
+                        <div  class="MenuLThree">
+                            
+                            <input id="menuThreeCheck8" type="checkbox" value="checkbox"/>
+                            <span id="menuThreeSelected8">A.3.2.个股估值分布的重要时点比较</span>
+                            
+                        </div>
+                    </div><!-- class="MenuLTwo " -->
+                </div>
+
+                
+                <!-- Unnamed (水平线) -->
+                
+
+
+
+
+
+
+                 <div class="MenuLOne">                   
+                    <p>
+                        <span class="menu-circle"></span>
+                        <input class="menuOneCheck" type="checkbox" value="checkbox"/>
+                        <span>B.风格/行业选择</span>
+                    </p> 
+                    <div  class="MenuLTwo ">
+                        <p>
+                        <span class="menu-circle"></span>
+                        <input class="menuTwoCheck" type="checkbox" value="checkbox" checked="checked"/>
+                        <span>B.1.短期_风格活跃度观察</span>
+                        </p>
+                        <div  class="MenuLThree " >
+                        <input id="menuThreeCheck9" type="checkbox" value="checkbox"/>
+                        <span id="menuThreeSelected9">B.1.1.指定板块相对换手率的历史变化</span>
+                        
+                        </div>
+                    </div> 
+                    <!-- Unnamed (水平线) -->
+                    <div  class="horizon-line"></div>
+                    <div  class="MenuLTwo ">
+                        <p>
+                        <span class="menu-circle"></span>
+                        <input class="menuTwoCheck" type="checkbox" value="checkbox"/>
+                        <span>B.2.短期_换手率观察</span>
+                        </p>
+                        <div  class="MenuLThree ">
+                        
+                            <input id="menuThreeCheck10" type="checkbox" value="checkbox"/>
+                            <span  id="menuThreeSelected10">B.2.1.本周换手率变化最大的基准/板块</span>
+                            
+                        </div>
+                        <div  class="MenuLThree ">
+                            
+                            <input id="menuThreeCheck11" type="checkbox" value="checkbox"/>
+                            <span  id="menuThreeSelected11">B.2.2.本周换手率绝对水平最高的基准/板块</span>
+                            
+                        </div>
+                        <div  class="MenuLThree ">
+                            
+                            <input id="menuThreeCheck12" type="checkbox" value="checkbox"/>
+                            <span  id="menuThreeSelected12">B.2.3.基准/板块的周换手率</span>
+                            
+                        </div>
+                        <div  class="MenuLThree ">
+                            
+                            <input id="menuThreeCheck13" type="checkbox" value="checkbox"/>
+                            <span  id="menuThreeSelected13">B.2.4.指定板块周换手率的历史变化</span>
+                            
+                        </div>
+                        
+                    </div>
+                    
+
+                    <!-- Unnamed (水平线) -->
+                    <div  class="horizon-line"></div> 
+                    <div  class="MenuLTwo ">
+                        <p>
+                            <span class="menu-circle"></span>
+                            <input class="menuTwoCheck" type="checkbox" value="checkbox"/>
+                            <span>B.3.短期_行业循环模型</span>
+                        </p>
+                        <div  class="MenuLThree ">
+                            <input id="menuThreeCheck14" type="checkbox" value="checkbox"/>
+                            <span  id="menuThreeSelected14">B.3.1.本周新增“速度/加速度”加强/衰竭的行业</span>
+                        </div>
+                        <div  class="MenuLThree ">
+                            <input id="menuThreeCheck15" type="checkbox" value="checkbox"/>
+                            <span  id="menuThreeSelected15">B.3.2.所有行业“速度/加速度”的最新分布</span>
+                        </div>
+                        <div  class="MenuLThree ">
+                            <input id="menuThreeCheck16" type="checkbox" value="checkbox"/>
+                            <span  id="menuThreeSelected16">B.3.3.指定行业“速度/加速度”的历史变化路径</span>
+                        </div>
+                    </div>
+                    <!-- Unnamed (水平线) -->
+                    <div  class="horizon-line"></div>
+
+                    <div  class="MenuLTwo ">
+                        <p>
+                            <span class="menu-circle"></span>
+                            <input class="menuTwoCheck" type="checkbox" value="checkbox" checked="checked"/>
+                            <span>B.4.中期_HP滤波后的行业估值</span>
+                        </p>
+                        <div  class="MenuLThree ">      
+                            <input id="menuThreeCheck17" type="checkbox" value="checkbox"/>
+                            <span  id="menuThreeSelected17">B.4.1中期_HP滤波后的行业估值</span>
+                        </div>
+                    </div> <!-- class="MenuLTwo " -->                
+                </div>
+
+            </div><!-- 目录div -->
+
+            <!-- 图表展示表头 -->
+            <div class="imageContent">
+            <div class="DiagramTitleOne">
+                
+                <span class="left-img-one"></span>              
+                <span>A.大势判断</span>
+                <div class="DiagramTitleOne_arrow">
+                    <span class="right-img-one"></span>
+                </div>
+
+                 <!-- 图表展示二级表头 -->
+                <div class="DiagramTitleTwo">
+                    <span class="left-img-two"></span> 
+                    <span>A.1.短期_资金类指标</span>     
+
+                    <!-- 图表展示三级表头 -->
+                    <div class="DiagramTitleThree" id="diagramThree1" aria-expanded="true">
+                        <div class="DiagramTitleThree_img">
+                            <span class="left-img-three"></span>
+                        <span>A.1.1.博弈/存量指标</span>
+                        <span class="right-img-three"></span> 
+                        </div>               
+                    </div> <!-- 图表展示三级表头 -->
+
+                    <!-- 图表展示div -->         
+                    <div class="DiagramBigDiv" id="diagramDiv1" aria-hidden="false">
+                        <!-- 图表div -->
+                        <span id="testExport" class="spanExportButton"><img src="static/lib/strategic/weekly/images/download.png"/></span>
+                        <div id="showDiagram1" class="DiagramAreaDiv1">
+                        </div>  
+                         
+                        <div class="DiagramAreaDiv2" key='0001'>
+                                    <div class="create-comment-container">
+            <div class="comment-overlay-shadow" id="comment-overlay-shadow">
+            </div>
+
+            <div class="comment-box">  
+                <div class="title">
+                    <h3><span>新建点评</span><span class="close-comment">x</span></h3> 
+                </div>
+                <div class="input">
+                    <h5>点评备注：</h5>
+                    <textarea placeholder="点评输入备注内容..." class="comment-word"></textarea>
+                </div>
+                <div class="button">
+                    <button  class="comment-page-btn cancel comment-cancel">取消</button>
+                    <button  class="comment-page-btn confirm comment-confirm">确定</button>
+                </div>
+            </div>
+        </div> 
+                                                        <div>
+                                <div class="table-input">
+                                    <span><label>开始时间</label><input   name="11"   class="input-date start-date" /></span>
+                                    <span><label>结束时间</label><input  name="22"  class="input-date end-date"/></span>
+                                    <input type="button" name="查询" value="查询" class="input-btn comment-inquery"/>
+                                    <input type="button" name="" value="点评" class="input-btn create-comment-btn"/>  
+                                </div>
+                            </div>
+                            
+                            <div class="table-container">
+                                <table class="comment-table" id="comment-table0001">
+                                </table>
+                            </div>
+                            <div class="table-title">
+                                指标说明<br/>
+                                1.存量资金市场假设下跟踪博弈资金的活跃度，可用于大盘的短期择时。<br/>
+                                2.历史经验表明该指标在存量博弈的市场中有良好的区间震荡特性，在0.25~0.40之间波动。
+                            </div>
+                        </div>             
+                    </div> <!-- 图表展示div -->
+
+                    <!-- 图表展示三级表头 -->
+                    <div class="DiagramTitleThree" id="diagramThree2" aria-expanded="true">
+                        <div class="DiagramTitleThree_img">
+                            <span class="left-img-three"></span>
+                        <span>A.1.2.融资买入/可用担保价值</span>
+                        <span class="right-img-three"></span> 
+
+                        </div>               
+                    </div> <!-- 图表展示三级表头 -->
+
+                    <!-- 图表展示div -->         
+                    <div class="DiagramBigDiv" id="diagramDiv2" aria-hidden="false" >
+                        <!-- 图表div -->
+                        <span class="spanExportButton"><img src="static/lib/strategic/weekly/images/download.png"/></span>
+                        <div id="showDiagram2" class="DiagramAreaDiv1">
+                        </div>   
+                        <div class="DiagramAreaDiv2" key="0002">
+                                    <div class="create-comment-container">
+            <div class="comment-overlay-shadow" id="comment-overlay-shadow">
+            </div>
+
+            <div class="comment-box">  
+                <div class="title">
+                    <h3><span>新建点评</span><span class="close-comment">x</span></h3> 
+                </div>
+                <div class="input">
+                    <h5>点评备注：</h5>
+                    <textarea placeholder="点评输入备注内容..." class="comment-word"></textarea>
+                </div>
+                <div class="button">
+                    <button  class="comment-page-btn cancel comment-cancel">取消</button>
+                    <button  class="comment-page-btn confirm comment-confirm">确定</button>
+                </div>
+            </div>
+        </div> 
+                                                        <div>
+                                <div class="table-input">
+                                    <span><label>开始时间</label><input   name="11"   class="input-date start-date" /></span>
+                                    <span><label>结束时间</label><input  name="22"  class="input-date end-date"/></span>
+                                    <input type="button" name="查询" value="查询" class="input-btn comment-inquery"/>
+                                    <input type="button" name="" value="点评" class="input-btn create-comment-btn"/>  
+                                </div>
+                            </div>
+                            
+                            <div class="table-container">
+                                <table class="comment-table" id="comment-table0002">
+                                </table>
+                            </div>
+                            <div class="table-title">
+                                    指标说明：<br/>
+                                    1.基于融资数据计算出的一个类似“博弈/存量指标”逻辑的资金类指标，数据为日度频率，波动更为频繁，可用于大盘短期择时的辅助类指标。<br/>
+                                    2.历史经验观察表明，该比值的主要波动区间在0.35-0.65之间。<br/>
+                                </div>
+                        </div>             
+                    </div> <!-- 图表展示div -->
+
+                </div> <!-- DiagramTitleTwo图表展示二级表头 -->
+
+                <!-- 图表展示二级表头 -->
+                <div class="DiagramTitleTwo">
+                    <span class="left-img-two"></span>  
+                    <span>A.2.短期_情绪类指标</span>  
+                    <!-- 图表展示三级表头 -->
+                    <div class="DiagramTitleThree" id="diagramThree3" aria-expanded="true">
+                        <div class="DiagramTitleThree_img">
+                            <span class="left-img-three"></span>     
+                            <span>A.2.1.综合性情绪指标</span>
+                            <span class="right-img-three"></span>  
+                        </div>               
+                    </div> <!-- 图表展示三级表头 -->
+
+                    <!-- 图表展示div -->         
+                    <div class="DiagramBigDiv" id="diagramDiv3" aria-hidden="false" >
+                        <!-- 图表div -->
+                        <span class="spanExportButton"><img src="static/lib/strategic/weekly/images/download.png"/></span>
+                        <div id="showDiagram3" class="DiagramAreaDiv1">
+                        </div>   
+                        <div class="DiagramAreaDiv2" key="0003">
+                                    <div class="create-comment-container">
+            <div class="comment-overlay-shadow" id="comment-overlay-shadow">
+            </div>
+
+            <div class="comment-box">  
+                <div class="title">
+                    <h3><span>新建点评</span><span class="close-comment">x</span></h3> 
+                </div>
+                <div class="input">
+                    <h5>点评备注：</h5>
+                    <textarea placeholder="点评输入备注内容..." class="comment-word"></textarea>
+                </div>
+                <div class="button">
+                    <button  class="comment-page-btn cancel comment-cancel">取消</button>
+                    <button  class="comment-page-btn confirm comment-confirm">确定</button>
+                </div>
+            </div>
+        </div> 
+                                                        <div>
+                                <div class="table-input">
+                                    <span><label>开始时间</label><input   name="11"   class="input-date start-date" /></span>
+                                    <span><label>结束时间</label><input  name="22"  class="input-date end-date"/></span>
+                                    <input type="button" name="查询" value="查询" class="input-btn comment-inquery"/>
+                                    <input type="button" name="" value="点评" class="input-btn create-comment-btn"/>  
+                                </div>
+                            </div>
+                            
+                            <div class="table-container">
+                                <table class="comment-table" id="comment-table0003">
+                                </table>
+                            </div>
+                            <div class="table-title">
+                                指标说明：<br/>
+                                1.结合强势股数量、两市成交换手情况、杠杆型产品的成交占比等指标，综合计算得出对市场交易情绪现状描述的指标，可用于大盘的短期择时。<br/>
+                                2.历史经验观察表明，该指标低于20%通常提示市场情绪处于低点附近该指标高于80%通常提示市场情绪处于过热状态。<br/>
+                                3.分项子指标说明：<br/>
+                                a)强势股数量占比指标：指定指数成分股中强势股的数量占比；<br/>
+                                b)风险偏好指标：被动型股票分级基金产品的B类日成交额之和与A类日成交额之和的比值；<br/>
+                                c)换手率指标：指定板块的年化日换手率。<br/>
+                             </div>
+                        </div>             
+                    </div> <!-- 图表展示div -->
+                    <!-- 图表展示三级表头 -->
+                    <div class="DiagramTitleThree" id="diagramThree4" aria-expanded="false">
+                        <div class="DiagramTitleThree_img">
+                            <span class="left-img-three"></span>
+                            <span>A.2.2.指定板块的强势股占比</span>
+                            <span class="right-img-three"></span> 
+                        </div>               
+                    </div> <!-- 图表展示三级表头 -->
+
+                    <!-- 图表展示div -->         
+                    <div class="DiagramBigDiv" id="diagramDiv4" aria-hidden="true" >
+                        <div class="selectDataArea">
+                            <span>平滑周期：</span>
+                            <select class="smooth" key="0004">
+                                    <option value="MA5" selected="selected">MA5</option>
+                                    <option value="MA10">MA10</option>
+                                    <option value="MA20">MA20</option>
+                                    <option value="MA60" >MA60</option>
+                                    <option value="MA120" >MA120</option>
+                            </select>
+                            <span>指数名称：</span>
+                            <select class="windCode" key="0004">
+                                    <option value="881001.WI" selected="selected">万得全A</option>
+                                    <option value="000300.SH">沪深300</option>
+                                    <option value="000905.SH">中证500</option>
+                                    <option value="399006.SZ" >创业板指</option>                          
+                            </select>
+                        </div>
+                        <!-- 图表div -->
+                        <span class="spanExportButton"><img src="static/lib/strategic/weekly/images/download.png"/></span>
+                        <div id="showDiagram4" class="DiagramAreaDiv1">
+                        </div>   
+                        <div class="DiagramAreaDiv2" key="0004">
+                                    <div class="create-comment-container">
+            <div class="comment-overlay-shadow" id="comment-overlay-shadow">
+            </div>
+
+            <div class="comment-box">  
+                <div class="title">
+                    <h3><span>新建点评</span><span class="close-comment">x</span></h3> 
+                </div>
+                <div class="input">
+                    <h5>点评备注：</h5>
+                    <textarea placeholder="点评输入备注内容..." class="comment-word"></textarea>
+                </div>
+                <div class="button">
+                    <button  class="comment-page-btn cancel comment-cancel">取消</button>
+                    <button  class="comment-page-btn confirm comment-confirm">确定</button>
+                </div>
+            </div>
+        </div> 
+                                                        <div>
+                                <!-- <div class="table-title">指标说明：业务提供</div> -->
+                                <div class="table-input">
+                                    <span><label>开始时间</label><input   name="11"   class="input-date start-date" /></span>
+                                    <span><label>结束时间</label><input  name="22"  class="input-date end-date"/></span>
+                                    <input type="button" name="查询" value="查询" class="input-btn comment-inquery"/>
+                                    <input type="button" name="" value="点评" class="input-btn create-comment-btn"/>  
+                                </div>
+                            </div>
+                            
+                            <div class="table-container">
+                                <table class="comment-table" id="comment-table0004">
+                                </table>
+                            </div>
+                        </div>              
+                    </div> <!-- 图表展示div -->
+                    <!-- 图表展示三级表头 -->
+                    <div class="DiagramTitleThree" id="diagramThree5" aria-expanded="false">
+                        <div class="DiagramTitleThree_img">
+                            <span class="left-img-three"></span>
+                        <span>A.2.3.分级基金成交显示的风险偏好</span>
+                        <span class="right-img-three"></span> 
+
+                        </div>               
+                    </div> <!-- 图表展示三级表头 -->
+
+                    <!-- 图表展示div -->         
+                    <div class="DiagramBigDiv" id="diagramDiv5" aria-hidden="true" >
+                        <div class="selectDataArea">
+                            <span>指数名称：</span>
+                            <select class="selected-index" key="0009">
+                            </select>
+                        </div>
+                        <!-- 图表div -->
+                        <span class="spanExportButton"><img src="static/lib/strategic/weekly/images/download.png"/></span>
+                        <div id="showDiagram5" class="DiagramAreaDiv1">
+                        </div>   
+                        <div class="DiagramAreaDiv2" key="0009">
+                                    <div class="create-comment-container">
+            <div class="comment-overlay-shadow" id="comment-overlay-shadow">
+            </div>
+
+            <div class="comment-box">  
+                <div class="title">
+                    <h3><span>新建点评</span><span class="close-comment">x</span></h3> 
+                </div>
+                <div class="input">
+                    <h5>点评备注：</h5>
+                    <textarea placeholder="点评输入备注内容..." class="comment-word"></textarea>
+                </div>
+                <div class="button">
+                    <button  class="comment-page-btn cancel comment-cancel">取消</button>
+                    <button  class="comment-page-btn confirm comment-confirm">确定</button>
+                </div>
+            </div>
+        </div> 
+                                                        <div>
+                                <!-- <div class="table-title">指标说明：业务提供</div> -->
+                                <div class="table-input">
+                                    <span><label>开始时间</label><input   name="11"   class="input-date start-date" /></span>
+                                    <span><label>结束时间</label><input  name="22"  class="input-date end-date"/></span>
+                                    <input type="button" name="查询" value="查询" class="input-btn comment-inquery"/>
+                                    <input type="button" name="" value="点评" class="input-btn create-comment-btn"/>  
+                                </div>
+                            </div>
+                            
+                            <div class="table-container">
+                                <table class="comment-table" id="comment-table0009">
+                                </table>
+                            </div>
+                        </div>             
+                    </div> <!-- 图表展示div -->
+                    <!-- 图表展示三级表头 -->
+                    <div class="DiagramTitleThree" id="diagramThree6" aria-expanded="false">
+                        <div class="DiagramTitleThree_img">
+                            <span class="left-img-three"></span>
+                        <span>A.2.4.指定板块的历史换手率</span>
+                        <span class="right-img-three"></span> 
+
+                        </div>               
+                    </div> <!-- 图表展示三级表头 -->
+
+                    <!-- 图表展示div -->         
+                    <div class="DiagramBigDiv" id="diagramDiv6" aria-hidden="true" >
+                        <div class="selectDataArea">
+                            <span>指数名称：</span>
+                            <select class="selected-index" key="0018"> 
+                            </select>
+                        </div>
+                        <!-- 图表div -->
+                        <span class="spanExportButton"><img src="static/lib/strategic/weekly/images/download.png"/></span>
+                        <div id="showDiagram6" class="DiagramAreaDiv1">
+                        </div>   
+                        <div class="DiagramAreaDiv2" key="0018">
+                                    <div class="create-comment-container">
+            <div class="comment-overlay-shadow" id="comment-overlay-shadow">
+            </div>
+
+            <div class="comment-box">  
+                <div class="title">
+                    <h3><span>新建点评</span><span class="close-comment">x</span></h3> 
+                </div>
+                <div class="input">
+                    <h5>点评备注：</h5>
+                    <textarea placeholder="点评输入备注内容..." class="comment-word"></textarea>
+                </div>
+                <div class="button">
+                    <button  class="comment-page-btn cancel comment-cancel">取消</button>
+                    <button  class="comment-page-btn confirm comment-confirm">确定</button>
+                </div>
+            </div>
+        </div> 
+                                                        <div>
+                                <div class="table-input">
+                                    <span><label>开始时间</label><input   name="11"   class="input-date start-date" /></span>
+                                    <span><label>结束时间</label><input  name="22"  class="input-date end-date"/></span>
+                                    <input type="button" name="查询" value="查询" class="input-btn comment-inquery"/>
+                                    <input type="button" name="" value="点评" class="input-btn create-comment-btn"/>  
+                                </div>
+                            </div>
+                            
+                            <div class="table-container">
+                                <table class="comment-table" id="comment-table0018">
+                                </table>
+                            </div>
+                            <div class="table-title">
+                                指标说明：<br/>
+                                1.指定行业或板块或指数的年化日换手率。<br/>
+                                2.历史经验表明，当指定行业平滑后的日换手率分位超过90%的时候，一般代表该行业短期涨幅突出、交易拥挤、处于过热状态、下跌的概率大，是短期卖点的及时提示。<br/>
+                            </div>
+                        </div>              
+                    </div> <!-- 图表展示div -->
+                </div> <!-- DiagramTitleTwo图表展示二级表头 -->
+
+                <!-- 图表展示二级表头 -->
+                <div class="DiagramTitleTwo">
+                    <span class="left-img-two"></span> 
+                    <span>A.3.长期_个股的估值分布</span>  
+
+                     <!-- 图表展示三级表头 -->
+                    <div class="DiagramTitleThree" id="diagramThree7" aria-expanded="false">
+                        <div class="DiagramTitleThree_img">
+                        <span class="left-img-three"></span>
+                        <span>A.3.1.指定板块的个股估值分布</span>
+                        <span class="right-img-three"></span> 
+
+                        </div>               
+                    </div> <!-- 图表展示三级表头 -->
+
+                    <!-- 图表展示div -->         
+                    <div class="DiagramBigDiv" id="diagramDiv7" aria-hidden="true" >
+                        <div class="selectDataArea">
+                            <span>指数名称A：</span>
+                            <select class="selected-index" key="2000">
+                            </select>
+                        </div>
+                        <!-- 图表div -->
+                        <span class="spanExportButton" id="leftButton7"><img src="static/lib/strategic/weekly/images/download.png"/></span>
+                        <span class="spanExportButton" id="rightButton7"><img src="static/lib/strategic/weekly/images/download.png"/></span>
+                        <div class="DiagramAreaDiv1">
+                            <div id="showDiagram7"></div>
+                            <div id="showDiagram7Small"></div>
+                        </div>
+                           
+                        <div class="DiagramAreaDiv2" key="2000">
+                                    <div class="create-comment-container">
+            <div class="comment-overlay-shadow" id="comment-overlay-shadow">
+            </div>
+
+            <div class="comment-box">  
+                <div class="title">
+                    <h3><span>新建点评</span><span class="close-comment">x</span></h3> 
+                </div>
+                <div class="input">
+                    <h5>点评备注：</h5>
+                    <textarea placeholder="点评输入备注内容..." class="comment-word"></textarea>
+                </div>
+                <div class="button">
+                    <button  class="comment-page-btn cancel comment-cancel">取消</button>
+                    <button  class="comment-page-btn confirm comment-confirm">确定</button>
+                </div>
+            </div>
+        </div> 
+                                                        <div>
+                                <div class="table-input">
+                                    <span><label>开始时间</label><input   name="11"   class="input-date start-date" /></span>
+                                    <span><label>结束时间</label><input  name="22"  class="input-date end-date"/></span>
+                                    <input type="button" name="查询" value="查询" class="input-btn comment-inquery"/>
+                                    <input type="button" name="" value="点评" class="input-btn create-comment-btn"/>  
+                                </div>
+                            </div>
+                            
+                            <div class="table-container">
+                                <table class="comment-table" id="comment-table2000">
+                                </table>
+                            </div>
+                            <div class="table-title">
+                                指标说明：<br/>
+                                1.指定日期时指定板块中个股的静态估值分布，可用于和历史极端情况进行对比。<br/>
+                                2.历史上极端情况的个股估值分布形态具有极强的参考意义：市场绝对高点对应的分布整体更平，右尾更厚；市场绝对低点对应的分布整体更尖，更偏左。<br/>
+                            </div>
+                        </div>             
+                    </div> <!-- 图表展示div -->
+
+                    <!-- 图表展示三级表头 -->
+                    <div class="DiagramTitleThree" id="diagramThree8" aria-expanded="true">
+                        <div class="DiagramTitleThree_img">
+                            <span class="left-img-three"></span>
+                        <span>A.3.2.个股估值分布的重要时点比较</span>
+                        <span class="right-img-three"></span> 
+
+                        </div>               
+                    </div> <!-- 图表展示三级表头 -->
+
+                    <!-- 图表展示div -->         
+                    <div class="DiagramBigDiv" id="diagramDiv8" aria-hidden="false" >
+                        <div class="selectDataArea">
+                            <span>指数名称A：</span>
+                            <select class="selected-index" key="1011">
+                            </select>
+                        </div>
+                        <!-- 图表div -->
+                        <span class="spanExportButton"><img src="static/lib/strategic/weekly/images/download.png"/></span>
+                        <div id="showDiagram8" class="DiagramAreaDiv1">
+                        </div>   
+                        <div class="DiagramAreaDiv2" key="1011">
+                                    <div class="create-comment-container">
+            <div class="comment-overlay-shadow" id="comment-overlay-shadow">
+            </div>
+
+            <div class="comment-box">  
+                <div class="title">
+                    <h3><span>新建点评</span><span class="close-comment">x</span></h3> 
+                </div>
+                <div class="input">
+                    <h5>点评备注：</h5>
+                    <textarea placeholder="点评输入备注内容..." class="comment-word"></textarea>
+                </div>
+                <div class="button">
+                    <button  class="comment-page-btn cancel comment-cancel">取消</button>
+                    <button  class="comment-page-btn confirm comment-confirm">确定</button>
+                </div>
+            </div>
+        </div> 
+                                                        <div>
+                                <!-- <div class="table-title">指标说明：业务提供</div> -->
+                                <div class="table-input">
+                                    <span><label>开始时间</label><input   name="11"   class="input-date start-date" /></span>
+                                    <span><label>结束时间</label><input  name="22"  class="input-date end-date"/></span>
+                                    <input type="button" name="查询" value="查询" class="input-btn comment-inquery"/>
+                                    <input type="button" name="" value="点评" class="input-btn create-comment-btn"/>  
+                                </div>
+                            </div>
+                            
+                            <div class="table-container">
+                                <table class="comment-table" id="comment-table1011">
+                                </table>
+                            </div>
+                        </div>             
+                    </div> <!-- 图表展示div -->
+
+                </div> <!-- DiagramTitleTwo图表展示二级表头 -->
+
+            </div> <!-- 图表展示表头 -->
+
+
+
+
+
+
+            <!-- 图表展示表头 -->
+            <div class="DiagramTitleOne">
+                <!--<div>-->
+                    <span class="left-img-one"></span>               
+                    <span>B.风格/行业选择</span>
+                    <div class="DiagramTitleOne_arrow">
+                        <span class="right-img-one"></span>
+                    </div>  
+                <!--</div>-->
+                            <!-- 图表展示二级表头 -->
+                <div class="DiagramTitleTwo">
+                    <span class="left-img-two"></span> 
+                    <span>B.1.短期_风格活跃度观察</span> 
+
+                    <div class="DiagramTitleThree" id="diagramThree9" aria-expanded="true">
+                        <div class="DiagramTitleThree_img">
+                            <span class="left-img-three"></span>
+                            <span>B.1.1.指定板块相对换手率的历史变化</span>
+                            <span class="right-img-three"></span> 
+                        </div>               
+                    </div> <!-- 图表展示三级表头 -->  
+                    <!-- 图表展示div -->         
+                    <div class="DiagramBigDiv" id="diagramDiv9" aria-hidden="false" >
+                        <div class="selectDataArea">
+                            <span>指数名称A：</span>
+                            <select class="selected-index windCode1" key="0019">
+                            </select>
+                            <span>指数名称B：</span>
+                            <select class="selected-index windCode2" key="0019">
+                            </select>
+                            <span>平滑周期：</span>
+                            <select class="smooth" key="0019">
+                                    <option value="MA5" selected="selected">MA5</option>
+                                    <option value="MA10">MA10</option>
+                                    <option value="MA20">MA20</option>
+                                    <option value="MA60" >MA60</option>
+                                    <option value="MA120" >MA120</option>
+                            </select>
+                        </div>
+                        <!-- 图表div -->
+                        <span class="spanExportButton"><img src="static/lib/strategic/weekly/images/download.png"/></span>
+                        <div id="showDiagram9" class="DiagramAreaDiv1">
+                        </div>   
+                        <div class="DiagramAreaDiv2" key="0019">
+                                    <div class="create-comment-container">
+            <div class="comment-overlay-shadow" id="comment-overlay-shadow">
+            </div>
+
+            <div class="comment-box">  
+                <div class="title">
+                    <h3><span>新建点评</span><span class="close-comment">x</span></h3> 
+                </div>
+                <div class="input">
+                    <h5>点评备注：</h5>
+                    <textarea placeholder="点评输入备注内容..." class="comment-word"></textarea>
+                </div>
+                <div class="button">
+                    <button  class="comment-page-btn cancel comment-cancel">取消</button>
+                    <button  class="comment-page-btn confirm comment-confirm">确定</button>
+                </div>
+            </div>
+        </div> 
+                                                        <div>
+                                <div class="table-input">
+                                    <span><label>开始时间</label><input   name="11"   class="input-date start-date" /></span>
+                                    <span><label>结束时间</label><input  name="22"  class="input-date end-date"/></span>
+                                    <input type="button" name="查询" value="查询" class="input-btn comment-inquery"/>
+                                    <input type="button" name="" value="点评" class="input-btn create-comment-btn"/>  
+                                </div>
+                            </div>
+                            
+                            <div class="table-container">
+                                <table class="comment-table" id="comment-table0019">
+                                </table>
+                            </div>
+                            <div class="table-title">
+                                指标说明：<br/>
+                                1.指定两个板块间的日换手率的比值，可用于观察市场风格的持续性。<br/>
+                                2.换手率的相对低位意味着市场对该行业或板块的关注度降到了低位，存在关注度上升的可能性；换手率的相对高位则意味着交易过于拥挤。<br/>                                    
+                            </div>
+                        </div>             
+                    </div> <!-- 图表展示div -->
+                </div> <!-- 图表展示二级表头 --> 
+                <!-- 图表展示二级表头 -->
+                <div class="DiagramTitleTwo">
+                    <span class="left-img-two"></span> 
+                    <span>B.2.短期_换手率观察</span> 
+
+                     <!-- 图表展示三级表头 -->
+                    <div class="DiagramTitleThree" id="diagramThree10" aria-expanded="true">
+                        <div class="DiagramTitleThree_img">
+                            <span class="left-img-three"></span>
+                            <span>B.2.1.本周换手率变化最大的基准/板块</span>
+                            <span class="right-img-three"></span> 
+                        </div>               
+                    </div> <!-- 图表展示三级表头 -->
+
+                    <!-- 图表展示div -->         
+                    <div class="DiagramBigDiv" id="diagramDiv10" aria-hidden="false">
+                        <!-- 图表div -->                        
+                        <span class="spanExportButton" id="leftButton"><img src="static/lib/strategic/weekly/images/download.png"/></span>
+                        <span class="spanExportButton" id="rightButton"><img src="static/lib/strategic/weekly/images/download.png"/></span>
+                        <div id="showDiagram10" class="DiagramAreaDiv1">                            
+                            <div id="showDiagramLeft10" class="DiagramAreaDiv1 showDiagramLeft">
+                            </div> 
+                            <div id="showDiagramRight10" class="DiagramAreaDiv1 showDiagramRight">
+                            </div>
+                        </div>   
+                        <div class="DiagramAreaDiv2" key="1018">
+                                    <div class="create-comment-container">
+            <div class="comment-overlay-shadow" id="comment-overlay-shadow">
+            </div>
+
+            <div class="comment-box">  
+                <div class="title">
+                    <h3><span>新建点评</span><span class="close-comment">x</span></h3> 
+                </div>
+                <div class="input">
+                    <h5>点评备注：</h5>
+                    <textarea placeholder="点评输入备注内容..." class="comment-word"></textarea>
+                </div>
+                <div class="button">
+                    <button  class="comment-page-btn cancel comment-cancel">取消</button>
+                    <button  class="comment-page-btn confirm comment-confirm">确定</button>
+                </div>
+            </div>
+        </div> 
+                                                        <div>
+                                <!-- <div class="table-title">指标说明：业务提供</div> -->
+                                <div class="table-input">
+                                    <span><label>开始时间</label><input   name="11"   class="input-date start-date" /></span>
+                                    <span><label>结束时间</label><input  name="22"  class="input-date end-date"/></span>
+                                    <input type="button" name="查询" value="查询" class="input-btn comment-inquery"/>
+                                    <input type="button" name="" value="点评" class="input-btn create-comment-btn"/>  
+                                </div>
+                            </div>
+                            
+                            <div class="table-container">
+                                <table class="comment-table" id="comment-table1018">
+                                </table>
+                            </div>
+                        </div>              
+                    </div> <!-- 图表展示div -->
+
+                    <!-- 图表展示三级表头 -->
+                    <div class="DiagramTitleThree" id="diagramThree11" aria-expanded="true">
+                        <div class="DiagramTitleThree_img">
+                            <span class="left-img-three"></span>
+                            <span>B.2.2.本周换手率绝对水平最高的基准/板块</span>
+                            <span class="right-img-three"></span> 
+                        </div>               
+                    </div> <!-- 图表展示三级表头 -->
+
+                    <!-- 图表展示div -->         
+                    <div class="DiagramBigDiv" id="diagramDiv11" aria-hidden="false">
+                        <!-- 图表div -->
+                        <span class="spanExportButton" id="leftButton11"><img src="static/lib/strategic/weekly/images/download.png"/></span>
+                        <span class="spanExportButton" id="rightButton11"><img src="static/lib/strategic/weekly/images/download.png"/></span>
+                        <div id="showDiagram11" class="DiagramAreaDiv1">
+                            <div id="showDiagramLeft11" class="DiagramAreaDiv1 showDiagramLeft">
+                            </div> 
+                            <div id="showDiagramRight11" class="DiagramAreaDiv1 showDiagramRight">
+                            </div> 
+                        </div>   
+                        <div class="DiagramAreaDiv2" key="1019">
+                                    <div class="create-comment-container">
+            <div class="comment-overlay-shadow" id="comment-overlay-shadow">
+            </div>
+
+            <div class="comment-box">  
+                <div class="title">
+                    <h3><span>新建点评</span><span class="close-comment">x</span></h3> 
+                </div>
+                <div class="input">
+                    <h5>点评备注：</h5>
+                    <textarea placeholder="点评输入备注内容..." class="comment-word"></textarea>
+                </div>
+                <div class="button">
+                    <button  class="comment-page-btn cancel comment-cancel">取消</button>
+                    <button  class="comment-page-btn confirm comment-confirm">确定</button>
+                </div>
+            </div>
+        </div> 
+                                                        <div>
+                                <!-- <div class="table-title">指标说明：业务提供</div> -->
+                                <div class="table-input">
+                                    <span><label>开始时间</label><input   name="11"   class="input-date start-date" /></span>
+                                    <span><label>结束时间</label><input  name="22"  class="input-date end-date"/></span>
+                                    <input type="button" name="查询" value="查询" class="input-btn comment-inquery"/>
+                                    <input type="button" name="" value="点评" class="input-btn create-comment-btn"/>  
+                                </div>
+                            </div>
+                            
+                            <div class="table-container">
+                                <table class="comment-table" id="comment-table1019">
+                                </table>
+                            </div>
+                        </div>           
+                    </div> <!-- 图表展示div -->
+
+                    <!-- 图表展示三级表头 -->
+                    <div class="DiagramTitleThree" id="diagramThree12" aria-expanded="false">
+                        <div class="DiagramTitleThree_img">
+                            <span class="left-img-three"></span>
+                            <span>B.2.3.基准/板块的周换手率</span>
+                            <span class="right-img-three"></span> 
+                        </div>               
+                    </div> <!-- 图表展示三级表头 -->
+
+                    <!-- 图表展示div -->         
+                    <div class="DiagramBigDiv" id="diagramDiv12" aria-hidden="true">
+                        <div class="selectDataArea">
+                            <button class="benchmark" data-catogory="base">基准</button>   
+                            <button class="plate" data-catogory="index">板块</button>      
+                        </div>
+                        <!-- 图表div -->
+                        <span class="spanExportButton"><img src="static/lib/strategic/weekly/images/download.png"/></span>
+                        <div id="showDiagram12" class="DiagramAreaDiv1">
+                            <div class="table-head-container">
+                                <table  cellspacing="0" cellpadding="0" class="table-head-title"> 
+                                    <colgroup>
+                                        <col style="width: 80px;" />
+                                        <col />
+                                    </colgroup>
+                                    <thead> 
+                                    <tr>  
+                                    <th  id="column0">基准指数 <span class="arrow"></span></th>  
+                                    <th  id="column1">本周涨跌幅 <span class="arrow"></span></th>  
+                                    <th  id="column2">上周涨跌幅 <span class="arrow"></span></th>  
+                                    <th  id="column3">本周年化<br/>换手率 <span class="arrow"></span></th> 
+                                    <th  id="column4">上周年化<br/>换手率<span class="arrow"></span></th>  
+                                    <th  id="column5">本周换手<br/>率分位 <span class="arrow"></span></th>  
+                                    <th  id="column6">上周换手<br/>率分位 <span class="arrow"></span></th>  
+                                 
+                                    </tr>  
+                                    </thead>
+                                </table> 
+                            </div>
+                            <div class="table_title">
+                                <table id="showTable" class="diagramTable"><colgroup>
+                                        <col style="width: 80px;" />
+                                        <col />
+                                    </colgroup></table>
+                            </div>
+                            <div id="showDiagram12Hide">
+                            <table id="showTableHide"  class="diagramTable"></table>
+                            </div>
+                        </div>   
+                        <div class="DiagramAreaDiv2" key="1022">
+                                    <div class="create-comment-container">
+            <div class="comment-overlay-shadow" id="comment-overlay-shadow">
+            </div>
+
+            <div class="comment-box">  
+                <div class="title">
+                    <h3><span>新建点评</span><span class="close-comment">x</span></h3> 
+                </div>
+                <div class="input">
+                    <h5>点评备注：</h5>
+                    <textarea placeholder="点评输入备注内容..." class="comment-word"></textarea>
+                </div>
+                <div class="button">
+                    <button  class="comment-page-btn cancel comment-cancel">取消</button>
+                    <button  class="comment-page-btn confirm comment-confirm">确定</button>
+                </div>
+            </div>
+        </div> 
+                                                        <div>
+                                <!-- <div class="table-title">指标说明：业务提供</div> -->
+                                <div class="table-input">
+                                    <span><label>开始时间</label><input   name="11"   class="input-date start-date" /></span>
+                                    <span><label>结束时间</label><input  name="22"  class="input-date end-date"/></span>
+                                    <input type="button" name="查询" value="查询" class="input-btn comment-inquery"/>
+                                    <input type="button" name="" value="点评" class="input-btn create-comment-btn"/>  
+                                </div>
+                            </div>
+                            
+                            <div class="table-container">
+                                <table class="comment-table" id="comment-table1022">
+                                </table>
+                            </div>
+                        </div>             
+                    </div> <!-- 图表展示div -->
+
+                    <!-- 图表展示三级表头 -->
+                    <div class="DiagramTitleThree" id="diagramThree13" aria-expanded="true">
+                        <div class="DiagramTitleThree_img">
+                            <span class="left-img-three"></span>
+                            <span>B.2.4.指定板块周换手率的历史变化</span>
+                            <span class="right-img-three"></span> 
+                        </div>               
+                    </div> <!-- 图表展示三级表头 -->
+
+                    <!-- 图表展示div -->    
+                    <div class="DiagramBigDiv" id="diagramDiv13" aria-hidden="false">
+                        <div class="selectDataArea">
+                            <span>指数名称：</span>
+                            <select class="selected-index" key="0022">
+                            </select>
+                        </div>
+
+                        <!-- 图表div -->
+                        <span class="spanExportButton"><img src="static/lib/strategic/weekly/images/download.png"/></span>
+                        <div id="showDiagram13" class="DiagramAreaDiv1">
+                        </div>   
+                        <div class="DiagramAreaDiv2" key="0022">
+                                    <div class="create-comment-container">
+            <div class="comment-overlay-shadow" id="comment-overlay-shadow">
+            </div>
+
+            <div class="comment-box">  
+                <div class="title">
+                    <h3><span>新建点评</span><span class="close-comment">x</span></h3> 
+                </div>
+                <div class="input">
+                    <h5>点评备注：</h5>
+                    <textarea placeholder="点评输入备注内容..." class="comment-word"></textarea>
+                </div>
+                <div class="button">
+                    <button  class="comment-page-btn cancel comment-cancel">取消</button>
+                    <button  class="comment-page-btn confirm comment-confirm">确定</button>
+                </div>
+            </div>
+        </div> 
+                     <div>  
+                                <div class="table-input">
+                                    <span><label>开始时间</label><input   name="11"   class="input-date start-date" /></span>
+                                    <span><label>结束时间</label><input  name="22"  class="input-date end-date"/></span>
+                                    <input type="button" name="查询" value="查询" class="input-btn comment-inquery"/>
+                                    <input type="button" name="" value="点评" class="input-btn create-comment-btn"/>  
+                                </div>
+                            </div>
+                            
+                            <div class="table-container">
+                                <table class="comment-table" id="comment-table0022">
+                                </table>
+                            </div>
+                        </div>             
+                    </div> <!-- 图表展示div -->               
+                </div> <!-- DiagramTitleTwo图表展示二级表头 -->
+
+                <!-- 图表展示二级表头 -->
+                <div class="DiagramTitleTwo">
+                    <span class="left-img-two"></span> 
+                    <span>B.3.短期_行业循环模型</span>  
+                    <!-- 图表展示三级表头 -->
+                    <div class="DiagramTitleThree" id="diagramThree14" aria-expanded="true">
+                        <div class="DiagramTitleThree_img">
+                            <span class="left-img-three"></span>
+                            <span>B.3.1.本周新增“速度/加速度”加强/衰竭的行业</span>
+                            <span class="right-img-three"></span> 
+                        </div>               
+                    </div> <!-- 图表展示三级表头 -->
+
+                    <!-- 图表展示div -->         
+                    <div class="DiagramBigDiv" id="diagramDiv14" aria-hidden="false">
+                        <!-- 图表div -->
+                        <span class="spanExportButton" id="leftButton14"><img src="static/lib/strategic/weekly/images/download.png"/></span>
+                        <span class="spanExportButton" id="rightButton14"><img src="static/lib/strategic/weekly/images/download.png"/></span>
+                        <div id="showDiagram14" class="DiagramAreaDiv1">
+                            <div id="showDiagramLeft14" class="DiagramAreaDiv1 showDiagramLeft">
+                            </div> 
+                            <div id="showDiagramRight14" class="DiagramAreaDiv1 showDiagramRight">
+                            </div> 
+                        </div>   
+                        <div class="DiagramAreaDiv2" key="1017">
+                                    <div class="create-comment-container">
+            <div class="comment-overlay-shadow" id="comment-overlay-shadow">
+            </div>
+
+            <div class="comment-box">  
+                <div class="title">
+                    <h3><span>新建点评</span><span class="close-comment">x</span></h3> 
+                </div>
+                <div class="input">
+                    <h5>点评备注：</h5>
+                    <textarea placeholder="点评输入备注内容..." class="comment-word"></textarea>
+                </div>
+                <div class="button">
+                    <button  class="comment-page-btn cancel comment-cancel">取消</button>
+                    <button  class="comment-page-btn confirm comment-confirm">确定</button>
+                </div>
+            </div>
+        </div> 
+                                                        <div>
+                                <div class="table-input">
+                                    <span><label>开始时间</label><input   name="11"   class="input-date start-date" /></span>
+                                    <span><label>结束时间</label><input  name="22"  class="input-date end-date"/></span>
+                                    <input type="button" name="查询" value="查询" class="input-btn comment-inquery"/>
+                                    <input type="button" name="" value="点评" class="input-btn create-comment-btn"/>  
+                                </div>
+                            </div>
+                            
+                            <div class="table-container">
+                                <table class="comment-table" id="comment-table1017">
+                                </table>
+                            </div>
+                            <div class="table-title">
+                                指标说明：<br/>
+                                1.刻画各行业指数价格相对走势的动能变化情况，可用于行业选择的短期择时。<br/>
+                                2.逻辑上选择刚从第4象限进入第1象限、并且上涨动能最高的行业，给予买入建议；同时对刚从第2象限进入第3象限、并且下跌动能最大的行业，给予卖出建议；从而获得超额收益。<br/>
+                                3.历史经验观察，在趋势明确的市场中，对行业轮动的捕捉效果较好；在大幅震荡市中表现一般。<br/>
+                            </div>
+                        </div>            
+                    </div> <!-- 图表展示div -->
+
+                    <!-- 图表展示三级表头 -->
+                    <div class="DiagramTitleThree" id="diagramThree15" aria-expanded="true">
+                        <div class="DiagramTitleThree_img">
+                            <span class="left-img-three"></span>
+                            <span>B.3.2.所有行业“速度/加速度”的最新分布</span>
+                            <span class="right-img-three"></span> 
+                        </div>               
+                    </div> <!-- 图表展示三级表头 -->
+
+                    <!-- 图表展示div -->         
+                    <div class="DiagramBigDiv" id="diagramDiv15" aria-hidden="false">
+                        <!-- 图表div -->
+                        <span class="spanExportButton"><img src="static/lib/strategic/weekly/images/download.png"/></span>
+                        <div id="showDiagram15" class="DiagramAreaDiv1">
+                        </div>   
+                        <div class="DiagramAreaDiv2" key="0016">
+                                    <div class="create-comment-container">
+            <div class="comment-overlay-shadow" id="comment-overlay-shadow">
+            </div>
+
+            <div class="comment-box">  
+                <div class="title">
+                    <h3><span>新建点评</span><span class="close-comment">x</span></h3> 
+                </div>
+                <div class="input">
+                    <h5>点评备注：</h5>
+                    <textarea placeholder="点评输入备注内容..." class="comment-word"></textarea>
+                </div>
+                <div class="button">
+                    <button  class="comment-page-btn cancel comment-cancel">取消</button>
+                    <button  class="comment-page-btn confirm comment-confirm">确定</button>
+                </div>
+            </div>
+        </div> 
+                                                        <div>
+                                <div class="table-title">
+                                </div>
+                                <div class="table-input">
+                                    <span><label>开始时间</label><input   name="11"   class="input-date start-date" /></span>
+                                    <span><label>结束时间</label><input  name="22"  class="input-date end-date"/></span>
+                                    <input type="button" name="查询" value="查询" class="input-btn comment-inquery"/>
+                                    <input type="button" name="" value="点评" class="input-btn create-comment-btn"/>  
+                                </div>
+                            </div>
+                            
+                            <div class="table-container">
+                                <table class="comment-table" id="comment-table0016">
+                                </table>
+                            </div>
+                        </div>            
+                    </div> <!-- 图表展示div -->
+
+                    <!-- 图表展示三级表头 -->
+                    <div class="DiagramTitleThree" id="diagramThree16" aria-expanded="false">
+                        <div class="DiagramTitleThree_img">
+                            <span class="left-img-three"></span>
+                            <span>B.3.3.指定行业“速度/加速度”的历史变化路径</span>
+                            <span class="right-img-three"></span> 
+                        </div>               
+                    </div> <!-- 图表展示三级表头 -->
+
+                    <!-- 图表展示div -->         
+                    <div class="DiagramBigDiv" id="diagramDiv16" aria-hidden="true">
+                        <div class="selectDataArea">
+                            <span>指数名称：</span>
+                            <select class="selected-citic-index" key="1016">
+                            </select>
+                        </div>
+                        <!-- 图表div -->
+                        <span class="spanExportButton"><img src="static/lib/strategic/weekly/images/download.png"/></span>
+                        <div id="showDiagram16" class="DiagramAreaDiv1">
+                        </div>   
+                        <div class="DiagramAreaDiv2" key="1016">
+                                    <div class="create-comment-container">
+            <div class="comment-overlay-shadow" id="comment-overlay-shadow">
+            </div>
+
+            <div class="comment-box">  
+                <div class="title">
+                    <h3><span>新建点评</span><span class="close-comment">x</span></h3> 
+                </div>
+                <div class="input">
+                    <h5>点评备注：</h5>
+                    <textarea placeholder="点评输入备注内容..." class="comment-word"></textarea>
+                </div>
+                <div class="button">
+                    <button  class="comment-page-btn cancel comment-cancel">取消</button>
+                    <button  class="comment-page-btn confirm comment-confirm">确定</button>
+                </div>
+            </div>
+        </div> 
+                                                        <div>
+                                <div class="table-title">
+                                </div>
+                                <div class="table-input">
+                                    <span><label>开始时间</label><input   name="11"   class="input-date start-date" /></span>
+                                    <span><label>结束时间</label><input  name="22"  class="input-date end-date"/></span>
+                                    <input type="button" name="查询" value="查询" class="input-btn comment-inquery"/>
+                                    <input type="button" name="" value="点评" class="input-btn create-comment-btn"/>  
+                                </div>
+                            </div>
+                            
+                            <div class="table-container">
+                                <table class="comment-table" id="comment-table1016">
+                                </table>
+                            </div>
+                        </div>             
+                    </div> <!-- 图表展示div -->
+
+                </div> <!-- 图表展示二级表头 -->
+
+                 <!-- 图表展示二级表头 -->
+                <div class="DiagramTitleTwo">
+                    <span class="left-img-two"></span> 
+                    <span>B.4.中期_HP滤波后的行业估值</span>  
+
+                    <!-- 图表展示三级表头 -->
+                    <div class="DiagramTitleThree" id="diagramThree17" aria-expanded="true">
+                        <div class="DiagramTitleThree_img">
+                            <span class="left-img-three"></span>
+                            <span>B.4.1中期_HP滤波后的行业估值</span>
+                            <span class="right-img-three"></span> 
+                        </div>               
+                    </div> <!-- 图表展示三级表头 -->
+
+                    <!-- 图表展示div -->         
+                    <div class="DiagramBigDiv" id="diagramDiv17" aria-hidden="false">
+                        <div class="selectDataArea">
+                            <span>指数名称：</span>
+                            <select class="selected-index" key="0014">
+                            </select>
+                        </div>
+                        <!-- 图表div -->
+                        <span class="spanExportButton"><img src="static/lib/strategic/weekly/images/download.png"/></span>
+                        <div id="showDiagram17" class="DiagramAreaDiv1">
+                        </div>   
+                        <div class="DiagramAreaDiv2" key="0014">
+                                    <div class="create-comment-container">
+            <div class="comment-overlay-shadow" id="comment-overlay-shadow">
+            </div>
+
+            <div class="comment-box">  
+                <div class="title">
+                    <h3><span>新建点评</span><span class="close-comment">x</span></h3> 
+                </div>
+                <div class="input">
+                    <h5>点评备注：</h5>
+                    <textarea placeholder="点评输入备注内容..." class="comment-word"></textarea>
+                </div>
+                <div class="button">
+                    <button  class="comment-page-btn cancel comment-cancel">取消</button>
+                    <button  class="comment-page-btn confirm comment-confirm">确定</button>
+                </div>
+            </div>
+        </div> 
+                                                        <div>
+                                <div class="table-input">
+                                    <span><label>开始时间</label><input   name="11"   class="input-date start-date" /></span>
+                                    <span><label>结束时间</label><input  name="22"  class="input-date end-date"/></span>
+                                    <input type="button" name="查询" value="查询" class="input-btn comment-inquery"/>
+                                    <input type="button" name="" value="点评" class="input-btn create-comment-btn"/>  
+                                </div>
+                            </div>
+                            
+                            <div class="table-container">
+                                <table class="comment-table" id="comment-table0014">
+                                </table>
+                            </div>
+                            <div class="table-title">
+                                指标说明：<br/>
+                                1.该指标重点关注各行业当前估值相对于各自行业长期趋势的偏离程度，用标准差刻画，可用于中长视角下的风格/行业选择。<br/>
+                                2.中长期来看，基于均值回归逻辑，低估值在不同经济和市场环境下是大概率有效的投资策略，并且极值情况是非常有意义的。<br/>
+                            </div>
+                        </div>              
+                    </div> <!-- 图表展示div -->              
+                </div> <!-- 图表展示二级表头 -->
+                              
+            </div> <!-- 图表展示表头 -->
+
+
+
+            </div>
+        </div><!-- 周报告正文div -->
+
+
+    </div>
+
+    <div class="returnToTop">
+        <div><img src="static/lib/strategic/weekly/images/toTop.png"/></div>
+        <div>返回顶部</div>
+    </div>
+    <div id="loading"></div>
+    <div id="exportWord" style="display: none"></div>
+
+    <script  type="text/javascript" src="static/js/strategic/weekly/observe.js"></script>
+    <script  type="text/javascript" src="static/js/strategic/weekly/table2Excel.js"></script>
+    <script  type="text/javascript" src="static/js/strategic/weekly/exportword.js"></script>
+	<script type="text/javascript">
+		$(document).ajaxComplete(function (evt, request, settings){
+		    var text = JSON.parse(request.responseText);
+		    if(text.state=="error"){
+		    	if(text.message=="redirect"){
+		    		top.location =text.data;
+		    	}
+		    }
+		})
+	</script>
+    </body>
+</html>
